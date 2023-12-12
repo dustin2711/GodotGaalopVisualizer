@@ -1,0 +1,67 @@
+(Vector2 leftPoint, Vector2 rightPoint) GetLeftAndRightIntersection2(float ax, float ay, float bx, float by, float cx, float cy, float dist)
+{
+	float[] bL = new float[8];
+	float[] bR = new float[8];
+
+	float[] a = new float[8];
+	float[] b = new float[8];
+	float[] c = new float[8];
+	float[] lineAB = new float[8];
+	float[] lineAB_ = new float[8];
+	float[] lineABL = new float[8];
+	float[] lineABR = new float[8];
+	float[] lineBC = new float[8];
+	float[] lineBC_ = new float[8];
+	float[] lineBCL = new float[8];
+	float[] lineBCR = new float[8];
+	float temp_gcse_1, temp_gcse_10, temp_gcse_11, temp_gcse_12, temp_gcse_13, temp_gcse_14, temp_gcse_15, temp_gcse_16, temp_gcse_17, temp_gcse_18, temp_gcse_19, temp_gcse_2, temp_gcse_20, temp_gcse_21, temp_gcse_23, temp_gcse_3, temp_gcse_4, temp_gcse_5, temp_gcse_6, temp_gcse_7, temp_gcse_8, temp_gcse_9;
+	a[5] = (-ax); // e0 ^ e2
+	b[5] = (-bx); // e0 ^ e2
+	c[5] = (-cx); // e0 ^ e2
+	temp_gcse_6 = (-b[5]);
+	lineAB_[1] = (-a[5]) * by + (-(ay * temp_gcse_6)); // e0
+	lineAB_[2] = (-(by + (-ay))); // e1
+	lineAB_[3] = temp_gcse_6 + a[5]; // e2
+	temp_gcse_2 = lineAB_[2] * lineAB_[2] + lineAB_[3] * lineAB_[3];
+	temp_gcse_4 = temp_gcse_2 * temp_gcse_2;
+	temp_gcse_5 = fabs(temp_gcse_2);
+	temp_gcse_9 = sqrtf(temp_gcse_5);
+	temp_gcse_12 = lineAB_[2] * lineAB_[2];
+	temp_gcse_15 = sqrtf(fabs(temp_gcse_4));
+	temp_gcse_16 = lineAB_[3] * lineAB_[3];
+	temp_gcse_20 = temp_gcse_9 / temp_gcse_15;
+	temp_gcse_23 = fabs(temp_gcse_4);
+	lineAB[1] = lineAB_[1] * temp_gcse_20; // e0
+	lineAB[2] = lineAB_[2] * temp_gcse_20; // e1
+	lineAB[3] = lineAB_[3] * temp_gcse_20; // e2
+	lineABL[1] = lineAB[1] - dist; // e0
+	lineABR[1] = lineAB[1] + dist; // e0
+	temp_gcse_11 = (-c[5]);
+	lineBC_[1] = temp_gcse_6 * cy + (-(by * temp_gcse_11)); // e0
+	lineBC_[2] = (-(cy + (-by))); // e1
+	lineBC_[3] = temp_gcse_11 + b[5]; // e2
+	temp_gcse_1 = sqrtf(fabs((lineBC_[2] * lineBC_[2] + lineBC_[3] * lineBC_[3]) * (lineBC_[2] * lineBC_[2] + lineBC_[3] * lineBC_[3])));
+	temp_gcse_7 = fabs(lineBC_[2] * lineBC_[2] + lineBC_[3] * lineBC_[3]);
+	temp_gcse_10 = sqrtf(temp_gcse_7);
+	temp_gcse_13 = fabs((lineBC_[2] * lineBC_[2] + lineBC_[3] * lineBC_[3]) * (lineBC_[2] * lineBC_[2] + lineBC_[3] * lineBC_[3]));
+	temp_gcse_14 = lineBC_[2] * lineBC_[2];
+	temp_gcse_17 = lineBC_[3] * lineBC_[3];
+	temp_gcse_18 = temp_gcse_10 / temp_gcse_1;
+	temp_gcse_19 = (lineBC_[2] * lineBC_[2] + lineBC_[3] * lineBC_[3]) * (lineBC_[2] * lineBC_[2] + lineBC_[3] * lineBC_[3]);
+	temp_gcse_21 = lineBC_[2] * lineBC_[2] + lineBC_[3] * lineBC_[3];
+	lineBC[1] = lineBC_[1] * temp_gcse_18; // e0
+	lineBC[2] = lineBC_[2] * temp_gcse_18; // e1
+	lineBC[3] = lineBC_[3] * temp_gcse_18; // e2
+	lineBCL[1] = lineBC[1] - dist; // e0
+	lineBCR[1] = lineBC[1] + dist; // e0
+	bL[4] = lineABL[1] * lineBC[2] + (-(lineAB[2] * lineBCL[1])); // e0 ^ e1
+	bL[5] = lineABL[1] * lineBC[3] + (-(lineAB[3] * lineBCL[1])); // e0 ^ e2
+	temp_gcse_3 = lineAB[3] * lineBC[2];
+	temp_gcse_8 = (-temp_gcse_3);
+	bL[6] = lineAB[2] * lineBC[3] + temp_gcse_8; // e1 ^ e2
+	bR[4] = lineABR[1] * lineBC[2] + (-(lineAB[2] * lineBCR[1])); // e0 ^ e1
+	bR[5] = lineABR[1] * lineBC[3] + (-(lineAB[3] * lineBCR[1])); // e0 ^ e2
+	bR[6] = bL[6]; // e1 ^ e2
+
+	return (ToVector2(bL), ToVector2(bR));
+}

@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://xsc465007r7r"]
+
+[ext_resource type="Script" path="res://Rectangle.cs" id="2_sj3t2"]
+[ext_resource type="Script" path="res://LinePolygon.cs" id="3_g8aba"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Line" type="Node2D" parent="."]
+position = Vector2(200, 200)
+script = ExtResource("3_g8aba")
+
+[node name="Rectangle" type="Node2D" parent="."]
+script = ExtResource("2_sj3t2")

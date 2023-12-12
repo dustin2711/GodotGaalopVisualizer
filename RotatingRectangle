@@ -1,0 +1,13 @@
+p0 = createPoint(0,0);
+p1 = createPoint(1, 1);
+p2 = createPoint(1,-1);
+p3 = createPoint(-1, -1);
+p4 = createPoint(-1, 1);
+
+angle = TIME
+M = cos(angle/2) + sin(angle / 2) * p0;
+
+?p5 = M*p1*~M;
+?p6 = M*p2*~M;
+?p7 = M*p3*~M;
+?p8 = M*p4*~M;
