@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "GeometricAlgebra": {
+      "commandName": "Project",
+      "commandLineArgs": "-e --path \"C:/Users/dark-/Desktop/GeometricAlgebra/GeometricAlgebraGodot\""
+    }
+  }
+}

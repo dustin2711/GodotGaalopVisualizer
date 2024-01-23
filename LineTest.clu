@@ -1,0 +1,2 @@
+//#pragma return line Godot.Vector2(e1, e2)
+?line = e1 + e2

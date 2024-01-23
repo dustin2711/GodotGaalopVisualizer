@@ -11,3 +11,5 @@ script = ExtResource("3_g8aba")
 
 [node name="Rectangle" type="Node2D" parent="."]
 script = ExtResource("2_sj3t2")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]

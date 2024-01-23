@@ -1,0 +1,46 @@
+//origin = createPoint(0, 0);
+tau = 6.2831853;
+
+e01 = e0^e1;
+e02 = e0^e2;
+e12 = e1^e2;
+
+//#pragma range 0<=bx<=3
+a = createPoint(ax, ay);
+b = createPoint(bx, by);
+c = createPoint(cx, cy);
+
+//dist = 0.1
+// Need to normalize so distance 1 actually means distance 1
+lineAB_ = *(a^b^einf);
+?lineAB = lineAB_ / abs(lineAB_);
+
+//#pragma range 0<=dist<=1
+lineABL = lineAB - dist * einf;
+lineABR = lineAB + dist * einf;
+
+
+lineBC_ = *(b^c^einf);
+lineBC = lineBC_ / abs(lineBC_);
+lineBCL = lineBC - dist * einf;
+lineBCR = lineBC + dist * einf;
+
+Translator = 1 + (Weg) * einf;
+?lineBCTranslated = Translator * lineBC * ~Translator
+
+Rotor90AroundA = cos(rotationPortion *tau / 2) + sin(rotationPortion *tau / 2) * e12;//cos(0.25*tau / 2) + sin(0.25*tau / 2) * a;
+//Rotor90AroundA = a*b;
+?verticalA = Rotor90AroundA * lineBC * ~Rotor90AroundA;
+
+//aL = lineABL ^ verticalA ^ e0;
+//aR = lineABR ^ verticalA ^ e0;
+
+//.#pragma output bL e0 ^ e1
+?bL = lineABL ^ lineBCL ^ e0;
+?bR = lineABR ^ lineBCR ^ e0;
+
+//?Sphere = b + 0.5 * (b*b-dist*dist) * einf + e0
+?Circle = b - 0.5 * dist*dist * einf
+
+?ArcStart = Circle ^ lineABR;
+?ArcEnd = Circle ^ lineBCR;
