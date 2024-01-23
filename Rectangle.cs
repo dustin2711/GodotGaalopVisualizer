@@ -58,17 +58,15 @@ public partial class Rectangle : Node2D
 
 	private void DrawRectangleUsingScalarScript()
 	{
-		(float p5_1, float p5_e01, float p5_e12, float p5_e02,
-		float p6_e01, float p6_e12, float p6_e02, float p6_1,
-		float p7_1, float p7_e01, float p7_e12, float p7_e02,
-		float p8_1, float p8_e01, float p8_e12, float p8_e02) = RotatingRectangle.Execute(0.1f * time);
+		(Vector2 p5, Vector2 p6, Vector2 p7, Vector2 p8)
+			= RotatingRectangle.Execute(0.1f * time);
 
 		DrawPolygon(new Vector2[]
 		{
-			100 * CreatePoint(p5_e02, p5_e12, p5_e01),
-			100 * CreatePoint(p6_e02, p6_e12, p6_e01),
-			100 * CreatePoint(p7_e02, p7_e12, p7_e01),
-			100 * CreatePoint(p8_e02, p8_e12, p8_e01)
+			100 * p5,
+			100 * p6,
+			100 * p7,
+			100 * p8
 		});
 	}
 
