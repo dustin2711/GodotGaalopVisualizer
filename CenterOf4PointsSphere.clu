@@ -1,0 +1,7 @@
+P1 =  P1x*e1 + P1y*e2 + P1z*e3 + P1i*einf +e0;
+P2 =  P2x*e1 + P2y*e2 + P2z*e3 + P2i*einf +e0;
+P3 =  P3x*e1 + P3y*e2 + P3z*e3 + P3i*einf +e0;
+P4 =  P4x*e1 + P4y*e2 + P4z*e3 + P4i*einf +e0;
+S = P1^P2^P3^P4;
+//#pragma output C e1 e2 e3
+?C = Normalize(S);

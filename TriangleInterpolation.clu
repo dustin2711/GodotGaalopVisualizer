@@ -1,0 +1,57 @@
+/*
+Reconstructing a Motor from Exact Point Correspondences
+according to Sect. 6.8 of the tutorial
+A Guided Tour to the Plane-Based Geometric Algebra PGA
+by Leo Dorst, University of Amsterdam
+*/
+ExpApprox = {1 + _P(1) + _P(1)*_P(1)/2 + _P(1)*_P(1)*_P(1)/6 +_P(1)*_P(1)*_P(1)*_P(1)/24}
+
+Motor = {
+    // computes the motor between two points, lines or planes
+    // as the sqrt of them
+    !temp = 1+_P(1)/_P(2);
+    !abstemp = abs(temp);
+    temp/abstemp
+}
+
+// original points
+A1 = createPoint(ax, ay, az);
+B1 = createPoint(bx, by, bz);
+C1 = createPoint(cx, cy, cz);
+
+// arbitrary transformation
+!GT = ExpApprox(0.3*(e1^e3) + 0.2*(e2^e0));
+// corresponding target points
+?At = GT * A1 * ~GT;
+?Bt = GT * B1 * ~GT;
+?Ct = GT * C1 * ~GT;
+
+// Transformation from A1 to At
+// (translation)
+!VA = Motor(At, A1);
+!A2 = VA * A1 * ~VA;
+!B2 = VA * B1 * ~VA;
+!C2 = VA * C1 * ~VA;
+
+// Transformation from B2 to Bt
+// based on the rotation from the line L2 to L1
+!L1 = *(*At ^ *Bt);
+!L2 = *(*At ^ *B2);
+!VB = Motor(L1, L2);
+!B3 = VB * B2 * ~VB;
+!C3 = VB * C2 * ~VB;
+
+// Transformation from C3 to Ct
+// based on the rotation of two planes
+!P1 = *(*L1 ^*Ct);
+!P2 = *(*L1 ^*C3);
+!VC = Motor(P1,P2);
+
+// complete transformation
+!V = VC * VB * VA;
+// interplation motor
+lerp = 1 * (1-t) + V * t;
+// interpolated points
+?AI = lerp * A1 * ~lerp;
+?BI = lerp * B1 * ~lerp;
+?CI = lerp * C1 * ~lerp;
