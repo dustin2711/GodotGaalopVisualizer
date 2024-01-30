@@ -80,6 +80,18 @@ public partial class TriangleInterpolationManager : Node3D
 		return (AI, BI, CI);
 	}
 
+    public static (Vector3, Vector3, Vector3) GetTriangleUsingVector3Short(float time)
+    {
+        // Return Vector3
+        (Vector3 AI, Vector3 At, Vector3 BI, Vector3 Bt, Vector3 CI, Vector3 Ct) = TriangleInterpolationVector3Short.Execute(
+           A.X, A.Y, A.Z,
+           B.X, B.Y, B.Z,
+           C.X, C.Y, C.Z,
+           Mathf.Sin(time));
+        return (AI, BI, CI);
+    }
+
+    
 	public override void _Process(double delta)
 	{
 		time += (float)delta;

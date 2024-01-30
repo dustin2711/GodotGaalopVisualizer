@@ -40,4 +40,11 @@ public class InterpolatingTriangleTest
     {
         (Vector3 a, Vector3 b, Vector3 c) = TriangleInterpolationManager.GetTriangleUsingVector3(0);
     }
+
+    [Benchmark]
+    [IterationCount(IterationCount)]
+    public void InterpolatingTriangleUsingVector3Short()
+    {
+        (Vector3 a, Vector3 b, Vector3 c) = TriangleInterpolationManager.GetTriangleUsingVector3Short(0);
+    }
 }
