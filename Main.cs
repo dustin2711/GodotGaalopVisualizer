@@ -27,6 +27,28 @@ public class InterpolatingTriangleTest
         (Vector3 a, Vector3 b, Vector3 c) = TriangleInterpolationManager.GetTriangleUsingArray(0);
     }
 
+
+    [Benchmark]
+    [IterationCount(IterationCount)]
+    public void InterpolatingTriangleUsingArrayMaxima()
+    {
+        (Vector3 a, Vector3 b, Vector3 c) = TriangleInterpolationManager.GetTriangleUsingArrayMaxima(0);
+    }
+
+    [Benchmark]
+    [IterationCount(IterationCount)]
+    public void InterpolatingTriangleUsingArrayCSE()
+    {
+        (Vector3 a, Vector3 b, Vector3 c) = TriangleInterpolationManager.GetTriangleUsingArrayCSE(0);
+    }
+
+    [Benchmark]
+    [IterationCount(IterationCount)]
+    public void InterpolatingTriangleUsingArrayMaximaCSE()
+    {
+        (Vector3 a, Vector3 b, Vector3 c) = TriangleInterpolationManager.GetTriangleUsingArrayMaximaCSE(0);
+    }
+
     [Benchmark]
     [IterationCount(IterationCount)]
     public void InterpolatingTriangleUsingTuple()
@@ -39,12 +61,5 @@ public class InterpolatingTriangleTest
     public void InterpolatingTriangleUsingVector3()
     {
         (Vector3 a, Vector3 b, Vector3 c) = TriangleInterpolationManager.GetTriangleUsingVector3(0);
-    }
-
-    [Benchmark]
-    [IterationCount(IterationCount)]
-    public void InterpolatingTriangleUsingVector3Short()
-    {
-        (Vector3 a, Vector3 b, Vector3 c) = TriangleInterpolationManager.GetTriangleUsingVector3Short(0);
     }
 }

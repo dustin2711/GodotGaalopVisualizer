@@ -47,6 +47,69 @@ public partial class TriangleInterpolationManager : Node3D
 			new Vector3(arrayCI[11], arrayCI[12], arrayCI[13]));
 	}
 
+	public static (Vector3, Vector3, Vector3) GetTriangleUsingArrayMaxima(float time)
+	{
+		float[] arrayAI = new float[32];
+		float[] arrayAt = new float[32];
+		float[] arrayBI = new float[32];
+		float[] arrayBt = new float[32];
+		float[] arrayCI = new float[32];
+		float[] arrayCt = new float[32];
+		TriangleInterpolationArraysMaxima.Execute(
+			A.X, A.Y, A.Z,
+			B.X, B.Y, B.Z,
+			C.X, C.Y, C.Z,
+			Mathf.Sin(time),
+			arrayAI, arrayAt, arrayBI, arrayBt, arrayCI, arrayCt
+		);
+		return (
+			new Vector3(arrayAI[11], arrayAI[12], arrayAI[13]),
+			new Vector3(arrayBI[11], arrayBI[12], arrayBI[13]),
+			new Vector3(arrayCI[11], arrayCI[12], arrayCI[13]));
+	}
+
+	public static (Vector3, Vector3, Vector3) GetTriangleUsingArrayCSE(float time)
+	{
+		float[] arrayAI = new float[32];
+		float[] arrayAt = new float[32];
+		float[] arrayBI = new float[32];
+		float[] arrayBt = new float[32];
+		float[] arrayCI = new float[32];
+		float[] arrayCt = new float[32];
+		TriangleInterpolationCSE.Execute(
+			A.X, A.Y, A.Z,
+			B.X, B.Y, B.Z,
+			C.X, C.Y, C.Z,
+			Mathf.Sin(time),
+			arrayAI, arrayAt, arrayBI, arrayBt, arrayCI, arrayCt
+		);
+		return (
+			new Vector3(arrayAI[11], arrayAI[12], arrayAI[13]),
+			new Vector3(arrayBI[11], arrayBI[12], arrayBI[13]),
+			new Vector3(arrayCI[11], arrayCI[12], arrayCI[13]));
+	}
+
+	public static (Vector3, Vector3, Vector3) GetTriangleUsingArrayMaximaCSE(float time)
+	{
+		float[] arrayAI = new float[32];
+		float[] arrayAt = new float[32];
+		float[] arrayBI = new float[32];
+		float[] arrayBt = new float[32];
+		float[] arrayCI = new float[32];
+		float[] arrayCt = new float[32];
+		TriangleInterpolationArrayMaximaCSE.Execute(
+			A.X, A.Y, A.Z,
+			B.X, B.Y, B.Z,
+			C.X, C.Y, C.Z,
+			Mathf.Sin(time),
+			arrayAI, arrayAt, arrayBI, arrayBt, arrayCI, arrayCt
+		);
+		return (
+			new Vector3(arrayAI[11], arrayAI[12], arrayAI[13]),
+			new Vector3(arrayBI[11], arrayBI[12], arrayBI[13]),
+			new Vector3(arrayCI[11], arrayCI[12], arrayCI[13]));
+	}
+
 	public static (Vector3, Vector3, Vector3) GetTriangleUsingTuple(float time)
 	{
 		(float AI_e123, float AI_e2, float AI_e3, float AI_e0, float AI_e1, float AI_e023, float AI_e012, float AI_e013,
@@ -80,18 +143,10 @@ public partial class TriangleInterpolationManager : Node3D
 		return (AI, BI, CI);
 	}
 
-    public static (Vector3, Vector3, Vector3) GetTriangleUsingVector3Short(float time)
-    {
-        // Return Vector3
-        (Vector3 AI, Vector3 At, Vector3 BI, Vector3 Bt, Vector3 CI, Vector3 Ct) = TriangleInterpolationVector3Short.Execute(
-           A.X, A.Y, A.Z,
-           B.X, B.Y, B.Z,
-           C.X, C.Y, C.Z,
-           Mathf.Sin(time));
-        return (AI, BI, CI);
-    }
-
-    
+	/// <summary>
+	///   Calculate the 3 corner positions of the interpolating triangle.
+	/// </summary>
+	/// <param name="delta"></param>
 	public override void _Process(double delta)
 	{
 		time += (float)delta;
