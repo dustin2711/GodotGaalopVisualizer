@@ -143,6 +143,40 @@ public partial class TriangleInterpolationManager : Node3D
 		return (AI, BI, CI);
 	}
 
+
+	public static (Vector3, Vector3, Vector3) GetTriangleUsingVector3CSE(float time)
+	{
+		// Return Vector3
+		(Vector3 AI, Vector3 At, Vector3 BI, Vector3 Bt, Vector3 CI, Vector3 Ct) = TriangleInterpolationVector3CSE.Execute(
+		   A.X, A.Y, A.Z,
+		   B.X, B.Y, B.Z,
+		   C.X, C.Y, C.Z,
+		   Mathf.Sin(time));
+		return (AI, BI, CI);
+	}
+
+	public static (Vector3, Vector3, Vector3) GetTriangleUsingVector3Maxima(float time)
+	{
+		// Return Vector3
+		(Vector3 AI, Vector3 At, Vector3 BI, Vector3 Bt, Vector3 CI, Vector3 Ct) = TriangleInterpolationVector3Maxima.Execute(
+		   A.X, A.Y, A.Z,
+		   B.X, B.Y, B.Z,
+		   C.X, C.Y, C.Z,
+		   Mathf.Sin(time));
+		return (AI, BI, CI);
+	}
+
+	public static (Vector3, Vector3, Vector3) GetTriangleUsingVector3MaximaCSE(float time)
+	{
+		// Return Vector3
+		(Vector3 AI, Vector3 At, Vector3 BI, Vector3 Bt, Vector3 CI, Vector3 Ct) = TriangleInterpolationVector3MaximaCSE.Execute(
+		   A.X, A.Y, A.Z,
+		   B.X, B.Y, B.Z,
+		   C.X, C.Y, C.Z,
+		   Mathf.Sin(time));
+		return (AI, BI, CI);
+	}
+
 	/// <summary>
 	///   Calculate the 3 corner positions of the interpolating triangle.
 	/// </summary>
