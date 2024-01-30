@@ -141,7 +141,9 @@ public static class TriangleInterpolationTuples
 		float CI_e023 = ((-(lerp_e12 * C1_e012)) + (-(lerp_e13 * cy)) + (-(lerp_e23 * C1_e023)) + (-lerp_e0123)) * (-lerp_e23) + (-((-lerp_e23) * lerp_e0123)) + (-(lerp_e13 * (-lerp_e03))) + (-lerp_e12) * (-lerp_e02) + (-((lerp_1 * C1_e012 + lerp_e03 + (-(lerp_e13 * C1_e023)) + lerp_e23 * cy) * (-lerp_e13))) + (lerp_1 * cy + (-lerp_e02) + lerp_e12 * C1_e023 + (-(lerp_e23 * C1_e012))) * (-lerp_e12) + (lerp_1 * C1_e023 + lerp_e01 + (-(lerp_e12 * cy)) + lerp_e13 * C1_e012) * lerp_1 + (-(lerp_1 * (-lerp_e01)));
 		float CI_e123 = (-lerp_e23) * (-lerp_e23) + (-(lerp_e13 * (-lerp_e13))) + (-lerp_e12) * (-lerp_e12) + lerp_1 * lerp_1;
 
-		GD.Print("Tuples: AI e012 = " + AI_e012);
+		// GD.Print("Tuples: AI e012 = " + AI_e012);
+
+		GD.Print("Tuples : ", AI_e123, AI_e2, AI_e3, AI_e0, AI_e1, AI_e023, AI_e012, AI_e013);
 
 		return (
 			AI_e123, AI_e2, AI_e3, AI_e0, AI_e1, AI_e023, AI_e012, AI_e013,

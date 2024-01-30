@@ -2,7 +2,7 @@ using System;
 
 public static class TriangleInterpolation
 {
-	public static (float AI_e13inf, float AI_e2, float AI_e3, float AI_e0, float AI_e1, float AI_e3inf0, float AI_e2inf0, float AI_e120, float AI_e123, float AI_e230, float AI_einf, float AI_e123inf0, float AI_e23inf, float AI_e1inf0, float AI_e130, float AI_e12inf, float At_e3, float At_e1, float At_e2, float At_einf, float At_e0, float At_e230, float At_e123inf0, float At_e13inf, float At_e120, float At_e123, float At_e130, float At_e2inf0, float BI_e1inf0, float BI_e1, float BI_e2, float BI_e3, float BI_e0, float BI_e12inf, float BI_e2inf0, float BI_e23inf, float BI_einf, float BI_e123inf0, float BI_e13inf, float BI_e3inf0, float BI_e130, float BI_e230, float BI_e123, float BI_e120, float Bt_e0, float Bt_e1, float Bt_e2, float Bt_e3, float Bt_e2inf0, float Bt_e123inf0, float Bt_e230, float Bt_einf, float Bt_e130, float Bt_e120, float Bt_e13inf, float Bt_e123, float CI_e130, float CI_e3inf0, float CI_e13inf, float CI_e1inf0, float CI_e2, float CI_e3, float CI_e0, float CI_e1, float CI_e123inf0, float CI_e12inf, float CI_e23inf, float CI_e2inf0, float CI_einf, float CI_e123, float CI_e120, float CI_e230, float Ct_e13inf, float Ct_e120, float Ct_e123, float Ct_e130, float Ct_e3, float Ct_e1, float Ct_e2, float Ct_e0, float Ct_e123inf0, float Ct_e2inf0, float Ct_einf, float Ct_e230) Execute(float ax, float ay, float az, float bx, float by, float bz, float cx, float cy, float cz, float t)
+	public static (Godot.Vector3, Godot.Vector3, Godot.Vector3, Godot.Vector3, Godot.Vector3, Godot.Vector3) Execute(float ax, float ay, float az, float bx, float by, float bz, float cx, float cy, float cz, float t)
 	{
 		float A1_einf = (ax * ax + ay * ay + az * az) / 2.0f;
 		float B1_einf = (bx * bx + by * by + bz * bz) / 2.0f;
@@ -329,12 +329,12 @@ public static class TriangleInterpolation
 		
 		
 		return (
-			AI_e13inf, AI_e2, AI_e3, AI_e0, AI_e1, AI_e3inf0, AI_e2inf0, AI_e120, AI_e123, AI_e230, AI_einf, AI_e123inf0, AI_e23inf, AI_e1inf0, AI_e130, AI_e12inf, 
-			At_e3, At_e1, At_e2, At_einf, At_e0, At_e230, At_e123inf0, At_e13inf, At_e120, At_e123, At_e130, At_e2inf0, 
-			BI_e1inf0, BI_e1, BI_e2, BI_e3, BI_e0, BI_e12inf, BI_e2inf0, BI_e23inf, BI_einf, BI_e123inf0, BI_e13inf, BI_e3inf0, BI_e130, BI_e230, BI_e123, BI_e120, 
-			Bt_e0, Bt_e1, Bt_e2, Bt_e3, Bt_e2inf0, Bt_e123inf0, Bt_e230, Bt_einf, Bt_e130, Bt_e120, Bt_e13inf, Bt_e123, 
-			CI_e130, CI_e3inf0, CI_e13inf, CI_e1inf0, CI_e2, CI_e3, CI_e0, CI_e1, CI_e123inf0, CI_e12inf, CI_e23inf, CI_e2inf0, CI_einf, CI_e123, CI_e120, CI_e230, 
-			Ct_e13inf, Ct_e120, Ct_e123, Ct_e130, Ct_e3, Ct_e1, Ct_e2, Ct_e0, Ct_e123inf0, Ct_e2inf0, Ct_einf, Ct_e230
+			new Godot.Vector3(AI_e120, AI_e130, AI_e230), 
+			new Godot.Vector3(At_e120, At_e130, At_e230), 
+			new Godot.Vector3(BI_e120, BI_e130, BI_e230), 
+			new Godot.Vector3(Bt_e120, Bt_e130, Bt_e230), 
+			new Godot.Vector3(CI_e120, CI_e130, CI_e230), 
+			new Godot.Vector3(Ct_e120, Ct_e130, Ct_e230)
 		);
 	}
 }
