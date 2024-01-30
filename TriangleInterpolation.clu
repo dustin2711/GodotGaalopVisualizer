@@ -52,6 +52,7 @@ C1 = createPoint(cx, cy, cz);
 // interplation motor
 lerp = 1 * (1-t) + V * t;
 // interpolated points
+# pragma return AI, BI, CI, At, Bt, Ct typed Godot.Vector3 as new Godot.Vector3(<e120>, <e130>, <e230>)
 ?AI = lerp * A1 * ~lerp;
 ?BI = lerp * B1 * ~lerp;
 ?CI = lerp * C1 * ~lerp;

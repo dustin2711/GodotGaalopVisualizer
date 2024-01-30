@@ -4,4 +4,5 @@ P3 =  P3x*e1 + P3y*e2 + P3z*e3 + P3i*einf +e0;
 P4 =  P4x*e1 + P4y*e2 + P4z*e3 + P4i*einf +e0;
 S = P1^P2^P3^P4;
 //#pragma output C e1 e2 e3
+#spragma return C typed Godot.Vector3 as new Godot.Vector3(<e1>, <e2>, <e3>)
 ?C = Normalize(S);

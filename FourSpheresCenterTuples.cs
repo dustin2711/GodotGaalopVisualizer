@@ -1,4 +1,4 @@
-public static class CenterOf4PointsSphereTuples
+public static class FourSpheresCenterTuples
 {
 	public static (float C_e3, float C_e2, float C_e1) Execute(float P1i, float P1x, float P1y, float P1z, float P2i, float P2x, float P2y, float P2z, float P3i, float P3x, float P3y, float P3z, float P4i, float P4x, float P4y, float P4z)
 	{

@@ -1,6 +1,7 @@
 using System;
+using Godot;
 
-public static class TriangleInterpolation
+public static class TriangleInterpolationTuples
 {
 	public static (float AI_e123, float AI_e2, float AI_e3, float AI_e0, float AI_e1, float AI_e023, float AI_e012, float AI_e013, float At_e0, float At_e023, float At_e123, float At_e012, float At_e013, float BI_e012, float BI_e013, float BI_e1, float BI_e2, float BI_e3, float BI_e0, float BI_e023, float BI_e123, float Bt_e023, float Bt_e0, float Bt_e013, float Bt_e012, float Bt_e123, float CI_e023, float CI_e2, float CI_e3, float CI_e0, float CI_e1, float CI_e012, float CI_e013, float CI_e123, float Ct_e123, float Ct_e013, float Ct_e012, float Ct_e0, float Ct_e023) Execute(float ax, float ay, float az, float bx, float by, float bz, float cx, float cy, float cz, float t)
 	{
@@ -139,14 +140,15 @@ public static class TriangleInterpolation
 		float CI_e013 = ((-(lerp_e12 * C1_e012)) + (-(lerp_e13 * cy)) + (-(lerp_e23 * C1_e023)) + (-lerp_e0123)) * (-lerp_e13) + (-((-lerp_e23) * (-lerp_e03))) + lerp_e13 * lerp_e0123 + (-lerp_e12) * (-lerp_e01) + (lerp_1 * C1_e012 + lerp_e03 + (-(lerp_e13 * C1_e023)) + lerp_e23 * cy) * (-lerp_e23) + (lerp_1 * cy + (-lerp_e02) + lerp_e12 * C1_e023 + (-(lerp_e23 * C1_e012))) * lerp_1 + (-((lerp_1 * C1_e023 + lerp_e01 + (-(lerp_e12 * cy)) + lerp_e13 * C1_e012) * (-lerp_e12))) + lerp_1 * (-lerp_e02);
 		float CI_e023 = ((-(lerp_e12 * C1_e012)) + (-(lerp_e13 * cy)) + (-(lerp_e23 * C1_e023)) + (-lerp_e0123)) * (-lerp_e23) + (-((-lerp_e23) * lerp_e0123)) + (-(lerp_e13 * (-lerp_e03))) + (-lerp_e12) * (-lerp_e02) + (-((lerp_1 * C1_e012 + lerp_e03 + (-(lerp_e13 * C1_e023)) + lerp_e23 * cy) * (-lerp_e13))) + (lerp_1 * cy + (-lerp_e02) + lerp_e12 * C1_e023 + (-(lerp_e23 * C1_e012))) * (-lerp_e12) + (lerp_1 * C1_e023 + lerp_e01 + (-(lerp_e12 * cy)) + lerp_e13 * C1_e012) * lerp_1 + (-(lerp_1 * (-lerp_e01)));
 		float CI_e123 = (-lerp_e23) * (-lerp_e23) + (-(lerp_e13 * (-lerp_e13))) + (-lerp_e12) * (-lerp_e12) + lerp_1 * lerp_1;
-		
-		
+
+		GD.Print("Tuples: AI e012 = " + AI_e012);
+
 		return (
-			AI_e123, AI_e2, AI_e3, AI_e0, AI_e1, AI_e023, AI_e012, AI_e013, 
-			At_e0, At_e023, At_e123, At_e012, At_e013, 
-			BI_e012, BI_e013, BI_e1, BI_e2, BI_e3, BI_e0, BI_e023, BI_e123, 
-			Bt_e023, Bt_e0, Bt_e013, Bt_e012, Bt_e123, 
-			CI_e023, CI_e2, CI_e3, CI_e0, CI_e1, CI_e012, CI_e013, CI_e123, 
+			AI_e123, AI_e2, AI_e3, AI_e0, AI_e1, AI_e023, AI_e012, AI_e013,
+			At_e0, At_e023, At_e123, At_e012, At_e013,
+			BI_e012, BI_e013, BI_e1, BI_e2, BI_e3, BI_e0, BI_e023, BI_e123,
+			Bt_e023, Bt_e0, Bt_e013, Bt_e012, Bt_e123,
+			CI_e023, CI_e2, CI_e3, CI_e0, CI_e1, CI_e012, CI_e013, CI_e123,
 			Ct_e123, Ct_e013, Ct_e012, Ct_e0, Ct_e023
 		);
 	}

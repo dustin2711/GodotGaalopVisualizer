@@ -1,6 +1,6 @@
 using System;
 
-public static class TriangleInterpolation
+public static class TriangleInterpolationArrays
 {
 	public static void Execute(float ax, float ay, float az, float bx, float by, float bz, float cx, float cy, float cz, float t, float[] AI, float[] At, float[] BI, float[] Bt, float[] CI, float[] Ct)
 	{
