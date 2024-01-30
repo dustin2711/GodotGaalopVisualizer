@@ -143,7 +143,7 @@ public static class TriangleInterpolationTuples
 
 		// GD.Print("Tuples: AI e012 = " + AI_e012);
 
-		GD.Print("Tuples : ", AI_e123, AI_e2, AI_e3, AI_e0, AI_e1, AI_e023, AI_e012, AI_e013);
+		// GD.Print("Tuples : ", AI_e123, AI_e2, AI_e3, AI_e0, AI_e1, AI_e023, AI_e012, AI_e013);
 
 		return (
 			AI_e123, AI_e2, AI_e3, AI_e0, AI_e1, AI_e023, AI_e012, AI_e013,
