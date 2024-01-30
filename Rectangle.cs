@@ -11,7 +11,6 @@ public partial class Rectangle : Node2D
 	public override void _Ready()
 	{
 		AddChild(poly);
-		// DrawText(new Vector2(100, 100), "1");
 	}
 
 	public void DrawText(Vector2 position, string text)
@@ -34,47 +33,45 @@ public partial class Rectangle : Node2D
 	{
 		time += 0.1f * (float)delta;
 
+		Vector2[] points;
 
-		// Vector2[] points = DrawRectangleUsingArrays();
-		Vector2[] points = DrawRectangleUsingTuples();
-		// Vector2[] points = DrawRectangleUsingScalarScript();
+		points = GetPointsUsingArrays();
+		// GD.Print("Array: " + points.JoinString());
+		points = GetPointsUsingTuples();
+		GD.Print("Tuples: " + points.JoinString());
+		points = GetPointsUsingVector2();
+		GD.Print("Vector2: " + points.JoinString());
 
 		points = points.Select(p => new Vector2(100, 100) + 100 * p).ToArray();
 
-		GD.Print(points.JoinString());
 
 		DrawPolygon(points);
 	}
 
-	// private Vector2[] DrawRectangleUsingArrays()
-	// {
-	// 	float[] p5 = new float[8];
-	// 	float[] p6 = new float[8];
-	// 	float[] p7 = new float[8];
-	// 	float[] p8 = new float[8];
-
-	// 	RotatingRectangle.Execute(time, p5, p6, p7, p8);
-
-	// 	return new Vector2[]
-	// 	{
-	// 		p5.ToVector2(),
-	// 		p5.ToVector2(),
-	// 		p5.ToVector2(),
-	// 		p5.ToVector2()
-	// 	};
-	// }
-
-	private Vector2[] DrawRectangleUsingTuples()
+	private Vector2[] GetPointsUsingArrays()
 	{
-		// (float p5_e01, float p5_e12, float p5_e02,
-		//  float p6_e01, float p6_e12, float p6_e02,
-		//  float p7_e01, float p7_e12, float p7_e02,
-		//  float p8_e02, float p8_e01, float p8_e12) = RotatingRectangle.Execute(0 * time);
+		float[] p5 = new float[8];
+		float[] p6 = new float[8];
+		float[] p7 = new float[8];
+		float[] p8 = new float[8];
 
+		RotatingRectangleArrays.Execute(time, p5, p6, p7, p8);
+
+		return new Vector2[]
+		{
+			CreatePoint(p5),
+			CreatePoint(p6),
+			CreatePoint(p7),
+			CreatePoint(p8)
+		};
+	}
+
+	private Vector2[] GetPointsUsingTuples()
+	{
 		(float p5_1, float p5_e01, float p5_e12, float p5_e02,
 		 float p6_e01, float p6_e12, float p6_e02, float p6_1,
 		 float p7_1, float p7_e01, float p7_e12, float p7_e02,
-		 float p8_1, float p8_e01, float p8_e12, float p8_e02) = RotatingRectangle.Execute(time);
+		 float p8_1, float p8_e01, float p8_e12, float p8_e02) = RotatingRectangleTuples.Execute(time);
 
 		return new Vector2[]
 		{
@@ -85,21 +82,26 @@ public partial class Rectangle : Node2D
 		};
 	}
 
-	// private Vector2[] DrawRectangleUsingScalarScript()
-	// {
-	// 	(Vector2 p5, Vector2 p6, Vector2 p7, Vector2 p8)
-	// 		= RotatingRectangle.Execute(0 * time);
+	private Vector2[] GetPointsUsingVector2()
+	{
+		(Vector2 p5, Vector2 p6, Vector2 p7, Vector2 p8) = RotatingRectangleVector2.Execute(time);
 
-	// 	GD.Print(p5);
+		return new Vector2[] { p5, p6, p7, p8 };
+	}
 
-	// 	return new Vector2[] { p5, p6, p7, p8 };
-	// }
+	/*
+		Blade-array-conversion:
+		[4]: e01
+		[5]: e02
+		[6]: e12
+	*/
+	public static Vector2 CreatePoint(float[] array)
+	{
+		return new Vector2(1f * -array[5] / array[6], 1f * array[4] / array[6]);
+	}
 
 	public static Vector2 CreatePoint(float e02, float e12, float e01)
 	{
-		// [4]: e0 ^ e1
-		// [5]: e0 ^ e2
-		// [6]: e1 ^ e2
 		return new Vector2(-e02 / e12, e01 / e12);
 	}
 
@@ -110,18 +112,3 @@ public partial class Rectangle : Node2D
 		poly.Color = color ?? new Color("Black");
 	}
 }
-
-
-// private final String LineClassString
-//         = "public class Line" + newline
-//         + "{" + newline
-//         + "{" + newline
-//         + "}" + newline;
-
-
-/*
-Only difference: sign
-
-		float p7_e01 = ((-M_1) + sinus_1) * M_1 + (-((M_1 +   sinus_1)  * (-sinus_1)));
-		float p8_e01 = (  M_1  + sinus_1) * M_1 + (-((M_1 + (-sinus_1)) * (-sinus_1)));
-*/
