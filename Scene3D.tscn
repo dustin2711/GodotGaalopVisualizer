@@ -8,7 +8,7 @@
 [node name="Root" type="Node3D"]
 
 [node name="Camera" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.977794, 0.209567, 0, -0.209567, 0.977794, 0, 1.60129, 4.02135)
+transform = Transform3D(1, 0, 0, 0, 0.999504, 0.0314976, 0, -0.0314976, 0.999504, 0, 0.451491, 2.95209)
 
 [node name="Light" type="DirectionalLight3D" parent="."]
 
