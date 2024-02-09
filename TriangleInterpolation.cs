@@ -5,7 +5,6 @@ public static class TriangleInterpolation
 {
 	public static (float AI_e123, float AI_e023, float AI_e012, float AI_e013, float At_e023, float At_e123, float At_e012, float At_e013, float BI_e012, float BI_e013, float BI_e023, float BI_e123, float Bt_e023, float Bt_e013, float Bt_e012, float Bt_e123, float CI_e023, float CI_e012, float CI_e013, float CI_e123, float Ct_e123, float Ct_e013, float Ct_e012, float Ct_e023) Execute(float ax, float ay, float az, float bx, float by, float bz, float cx, float cy, float cz, float t)
 	{
-		float temp_gcse_1, temp_gcse_10, temp_gcse_100, temp_gcse_101, temp_gcse_102, temp_gcse_103, temp_gcse_104, temp_gcse_105, temp_gcse_106, temp_gcse_107, temp_gcse_108, temp_gcse_109, temp_gcse_11, temp_gcse_110, temp_gcse_111, temp_gcse_112, temp_gcse_113, temp_gcse_114, temp_gcse_115, temp_gcse_116, temp_gcse_117, temp_gcse_118, temp_gcse_119, temp_gcse_12, temp_gcse_120, temp_gcse_121, temp_gcse_122, temp_gcse_123, temp_gcse_124, temp_gcse_125, temp_gcse_126, temp_gcse_127, temp_gcse_128, temp_gcse_129, temp_gcse_13, temp_gcse_130, temp_gcse_131, temp_gcse_132, temp_gcse_133, temp_gcse_134, temp_gcse_135, temp_gcse_136, temp_gcse_137, temp_gcse_138, temp_gcse_139, temp_gcse_14, temp_gcse_140, temp_gcse_141, temp_gcse_142, temp_gcse_143, temp_gcse_144, temp_gcse_145, temp_gcse_146, temp_gcse_147, temp_gcse_148, temp_gcse_149, temp_gcse_15, temp_gcse_150, temp_gcse_151, temp_gcse_152, temp_gcse_153, temp_gcse_154, temp_gcse_155, temp_gcse_156, temp_gcse_157, temp_gcse_158, temp_gcse_159, temp_gcse_16, temp_gcse_160, temp_gcse_161, temp_gcse_162, temp_gcse_163, temp_gcse_164, temp_gcse_165, temp_gcse_167, temp_gcse_168, temp_gcse_169, temp_gcse_17, temp_gcse_170, temp_gcse_172, temp_gcse_173, temp_gcse_174, temp_gcse_175, temp_gcse_176, temp_gcse_177, temp_gcse_178, temp_gcse_179, temp_gcse_18, temp_gcse_180, temp_gcse_19, temp_gcse_2, temp_gcse_20, temp_gcse_21, temp_gcse_22, temp_gcse_23, temp_gcse_24, temp_gcse_25, temp_gcse_26, temp_gcse_27, temp_gcse_28, temp_gcse_29, temp_gcse_3, temp_gcse_30, temp_gcse_31, temp_gcse_32, temp_gcse_33, temp_gcse_34, temp_gcse_35, temp_gcse_36, temp_gcse_37, temp_gcse_38, temp_gcse_39, temp_gcse_4, temp_gcse_40, temp_gcse_41, temp_gcse_42, temp_gcse_43, temp_gcse_44, temp_gcse_45, temp_gcse_46, temp_gcse_47, temp_gcse_48, temp_gcse_49, temp_gcse_5, temp_gcse_50, temp_gcse_51, temp_gcse_52, temp_gcse_53, temp_gcse_54, temp_gcse_55, temp_gcse_56, temp_gcse_57, temp_gcse_58, temp_gcse_59, temp_gcse_6, temp_gcse_60, temp_gcse_61, temp_gcse_62, temp_gcse_63, temp_gcse_64, temp_gcse_65, temp_gcse_66, temp_gcse_67, temp_gcse_68, temp_gcse_69, temp_gcse_7, temp_gcse_70, temp_gcse_71, temp_gcse_72, temp_gcse_73, temp_gcse_74, temp_gcse_75, temp_gcse_76, temp_gcse_77, temp_gcse_78, temp_gcse_79, temp_gcse_8, temp_gcse_80, temp_gcse_81, temp_gcse_82, temp_gcse_83, temp_gcse_84, temp_gcse_85, temp_gcse_86, temp_gcse_87, temp_gcse_88, temp_gcse_89, temp_gcse_9, temp_gcse_90, temp_gcse_91, temp_gcse_92, temp_gcse_93, temp_gcse_94, temp_gcse_95, temp_gcse_96, temp_gcse_97, temp_gcse_98, temp_gcse_99;
 		float At_e012 = 0.5646044625f * ax - 0.8253494889062499f * az;
 		float temp_gcse_77 = 0.9999899889062499f * ay;
 		float At_e013 = temp_gcse_77 + 0.399867025f;
@@ -47,42 +46,42 @@ public static class TriangleInterpolation
 		float L2_e13 = At_e013 - 0.9999899889062499f * B2_e013;
 		float L2_e23 = At_e023 - 0.9999899889062499f * B2_e023;
 		float temp_gcse_21 = L2_e12 * L2_e12 * L2_e12;
-		float temp_gcse_24 = 6.0f * MathF.Pow(L2_e12,4.0f);
-		float temp_gcse_25 = 4.0f * MathF.Pow(L2_e12,6.0f);
+		float temp_gcse_24 = 6.0f * MathF.Pow(L2_e12, 4.0f);
+		float temp_gcse_25 = 4.0f * MathF.Pow(L2_e12, 6.0f);
 		float temp_gcse_35 = 4.0f * L2_e23 * L2_e23;
 		float temp_gcse_37 = 3.0f * L1_e13 * L2_e23 * L2_e23;
-		float temp_gcse_40 = 6.0f * MathF.Pow(L2_e23,4.0f);
-		float temp_gcse_41 = 4.0f * MathF.Pow(L2_e23,6.0f);
-		float temp_gcse_45 = MathF.Pow(L2_e23,6.0f);
-		float temp_gcse_46 = MathF.Pow(L2_e23,4.0f);
+		float temp_gcse_40 = 6.0f * MathF.Pow(L2_e23, 4.0f);
+		float temp_gcse_41 = 4.0f * MathF.Pow(L2_e23, 6.0f);
+		float temp_gcse_45 = MathF.Pow(L2_e23, 6.0f);
+		float temp_gcse_46 = MathF.Pow(L2_e23, 4.0f);
 		float temp_gcse_48 = L2_e12 * L2_e12;
-		float temp_gcse_56 = MathF.Pow(L2_e12,5.0f);
+		float temp_gcse_56 = MathF.Pow(L2_e12, 5.0f);
 		float temp_gcse_61 = 3.0f * L1_e12 * L2_e23 * L2_e23;
 		float temp_gcse_63 = 3.0f * L1_e13 * temp_gcse_46;
 		float temp_gcse_71 = L2_e23 * L2_e23 * L2_e23;
-		float temp_gcse_78 = MathF.Pow(L2_e12,4.0f);
+		float temp_gcse_78 = MathF.Pow(L2_e12, 4.0f);
 		float temp_gcse_81 = 4.0f * temp_gcse_48;
-		float temp_gcse_101 = MathF.Pow(L2_e12,8.0f);
-		float temp_gcse_111 = MathF.Pow(L2_e13,4.0f);
-		float temp_gcse_115 = 3.0f * L1_e23 * MathF.Pow(L2_e23,5.0f);
+		float temp_gcse_101 = MathF.Pow(L2_e12, 8.0f);
+		float temp_gcse_111 = MathF.Pow(L2_e13, 4.0f);
+		float temp_gcse_115 = 3.0f * L1_e23 * MathF.Pow(L2_e23, 5.0f);
 		float temp_gcse_116 = 3.0f * L1_e23 * L2_e23;
 		float temp_gcse_121 = L2_e23 * L2_e23;
-		float temp_gcse_122 = MathF.Pow(L2_e13,8.0f);
+		float temp_gcse_122 = MathF.Pow(L2_e13, 8.0f);
 		float temp_gcse_124 = 3.0f * L1_e12 * temp_gcse_46;
 		float temp_gcse_131 = 12.0f * temp_gcse_46;
-		float temp_gcse_133 = MathF.Pow(L2_e23,5.0f);
+		float temp_gcse_133 = MathF.Pow(L2_e23, 5.0f);
 		float temp_gcse_135 = 3.0f * L1_e23;
 		float temp_gcse_136 = 12.0f * temp_gcse_121 + temp_gcse_116;
-		float temp_gcse_138 = MathF.Pow(L2_e23,8.0f);
+		float temp_gcse_138 = MathF.Pow(L2_e23, 8.0f);
 		float temp_gcse_141 = L1_e23 * L2_e23;
 		float temp_gcse_144 = 12.0f * temp_gcse_121;
 		float temp_gcse_154 = temp_gcse_135 * temp_gcse_71;
 		float temp_gcse_162 = L2_e13 * L2_e13;
-		float temp_gcse_174 = MathF.Pow(L2_e12,6.0f);
+		float temp_gcse_174 = MathF.Pow(L2_e12, 6.0f);
 		float temp_gcse_175 = 3.0f * L1_e12;
-		float temp_gcse_176 = MathF.Pow(L2_e13,6.0f);
+		float temp_gcse_176 = MathF.Pow(L2_e13, 6.0f);
 		float temp_gcse_179 = 3.0f * L1_e13;
-		float macro_Motor_temp1_1 = (temp_gcse_122 + L1_e13 * MathF.Pow(L2_e13,7.0f) + (temp_gcse_81 + L1_e12 * L2_e12 + temp_gcse_35 + temp_gcse_141) * temp_gcse_176 + (temp_gcse_179 * temp_gcse_48 + temp_gcse_37) * MathF.Pow(L2_e13,5.0f) + (temp_gcse_24 + temp_gcse_175 * temp_gcse_21 + temp_gcse_136 * temp_gcse_48 + temp_gcse_61 * L2_e12 + temp_gcse_40 + temp_gcse_154) * temp_gcse_111 + (temp_gcse_179 * temp_gcse_78 + 6.0f * L1_e13 * temp_gcse_121 * temp_gcse_48 + temp_gcse_63) * temp_gcse_162 * L2_e13 + (temp_gcse_25 + temp_gcse_175 * temp_gcse_56 + temp_gcse_136 * temp_gcse_78 + 6.0f * L1_e12 * temp_gcse_121 * temp_gcse_21 + (temp_gcse_131 + 6.0f * L1_e23 * temp_gcse_71) * temp_gcse_48 + temp_gcse_124 * L2_e12 + temp_gcse_41 + temp_gcse_115) * temp_gcse_162 + (L1_e13 * temp_gcse_174 + temp_gcse_37 * temp_gcse_78 + temp_gcse_63 * temp_gcse_48 + L1_e13 * temp_gcse_45) * L2_e13 + temp_gcse_101 + L1_e12 * MathF.Pow(L2_e12,7.0f) + (temp_gcse_35 + temp_gcse_141) * temp_gcse_174 + temp_gcse_61 * temp_gcse_56 + (temp_gcse_40 + temp_gcse_154) * temp_gcse_78 + temp_gcse_124 * temp_gcse_21 + (temp_gcse_41 + temp_gcse_115) * temp_gcse_48 + L1_e12 * temp_gcse_45 * L2_e12 + temp_gcse_138 + L1_e23 * MathF.Pow(L2_e23,7.0f)) / (temp_gcse_122 + (temp_gcse_81 + temp_gcse_35) * temp_gcse_176 + (temp_gcse_24 + temp_gcse_144 * temp_gcse_48 + temp_gcse_40) * temp_gcse_111 + (temp_gcse_25 + temp_gcse_144 * temp_gcse_78 + temp_gcse_131 * temp_gcse_48 + temp_gcse_41) * temp_gcse_162 + temp_gcse_101 + temp_gcse_35 * temp_gcse_174 + temp_gcse_40 * temp_gcse_78 + temp_gcse_41 * temp_gcse_48 + temp_gcse_138);
+		float macro_Motor_temp1_1 = (temp_gcse_122 + L1_e13 * MathF.Pow(L2_e13, 7.0f) + (temp_gcse_81 + L1_e12 * L2_e12 + temp_gcse_35 + temp_gcse_141) * temp_gcse_176 + (temp_gcse_179 * temp_gcse_48 + temp_gcse_37) * MathF.Pow(L2_e13, 5.0f) + (temp_gcse_24 + temp_gcse_175 * temp_gcse_21 + temp_gcse_136 * temp_gcse_48 + temp_gcse_61 * L2_e12 + temp_gcse_40 + temp_gcse_154) * temp_gcse_111 + (temp_gcse_179 * temp_gcse_78 + 6.0f * L1_e13 * temp_gcse_121 * temp_gcse_48 + temp_gcse_63) * temp_gcse_162 * L2_e13 + (temp_gcse_25 + temp_gcse_175 * temp_gcse_56 + temp_gcse_136 * temp_gcse_78 + 6.0f * L1_e12 * temp_gcse_121 * temp_gcse_21 + (temp_gcse_131 + 6.0f * L1_e23 * temp_gcse_71) * temp_gcse_48 + temp_gcse_124 * L2_e12 + temp_gcse_41 + temp_gcse_115) * temp_gcse_162 + (L1_e13 * temp_gcse_174 + temp_gcse_37 * temp_gcse_78 + temp_gcse_63 * temp_gcse_48 + L1_e13 * temp_gcse_45) * L2_e13 + temp_gcse_101 + L1_e12 * MathF.Pow(L2_e12, 7.0f) + (temp_gcse_35 + temp_gcse_141) * temp_gcse_174 + temp_gcse_61 * temp_gcse_56 + (temp_gcse_40 + temp_gcse_154) * temp_gcse_78 + temp_gcse_124 * temp_gcse_21 + (temp_gcse_41 + temp_gcse_115) * temp_gcse_48 + L1_e12 * temp_gcse_45 * L2_e12 + temp_gcse_138 + L1_e23 * MathF.Pow(L2_e23, 7.0f)) / (temp_gcse_122 + (temp_gcse_81 + temp_gcse_35) * temp_gcse_176 + (temp_gcse_24 + temp_gcse_144 * temp_gcse_48 + temp_gcse_40) * temp_gcse_111 + (temp_gcse_25 + temp_gcse_144 * temp_gcse_78 + temp_gcse_131 * temp_gcse_48 + temp_gcse_41) * temp_gcse_162 + temp_gcse_101 + temp_gcse_35 * temp_gcse_174 + temp_gcse_40 * temp_gcse_78 + temp_gcse_41 * temp_gcse_48 + temp_gcse_138);
 		float temp_gcse_14 = L2_e13 * L2_e13 + L2_e12 * L2_e12;
 		float temp_gcse_139 = temp_gcse_14 + temp_gcse_121;
 		float macro_Motor_temp1_e01 = (L1_e03 * L2_e13 + L1_e02 * L2_e12 - L1_e13 * L2_e03 - L1_e12 * L2_e02) / temp_gcse_139;
@@ -129,21 +128,21 @@ public static class TriangleInterpolation
 		float P2_e2 = C3_e023 * L1_e12 - C3_e123 * L1_e02 - C3_e012 * L1_e23;
 		float P2_e3 = C3_e023 * L1_e13 - C3_e123 * L1_e03 - C3_e013 * L1_e23;
 		float temp_gcse_5 = 3.0f * P2_e2 * P2_e2;
-		float temp_gcse_6 = 3.0f * MathF.Pow(P2_e2,4.0f);
-		float temp_gcse_22 = 3.0f * MathF.Pow(P2_e1,4.0f);
+		float temp_gcse_6 = 3.0f * MathF.Pow(P2_e2, 4.0f);
+		float temp_gcse_22 = 3.0f * MathF.Pow(P2_e1, 4.0f);
 		float temp_gcse_23 = 2.0f * P1_e3;
 		float temp_gcse_26 = P1_e1 * P2_e1;
-		float temp_gcse_29 = MathF.Pow(P2_e1,6.0f);
+		float temp_gcse_29 = MathF.Pow(P2_e1, 6.0f);
 		float temp_gcse_32 = 2.0f * P1_e2;
 		float temp_gcse_36 = 2.0f * P1_e1;
-		float temp_gcse_38 = MathF.Pow(P2_e2,6.0f);
+		float temp_gcse_38 = MathF.Pow(P2_e2, 6.0f);
 		float temp_gcse_52 = temp_gcse_23 * P2_e1 * P2_e1;
-		float temp_gcse_53 = MathF.Pow(P2_e3,6.0f);
+		float temp_gcse_53 = MathF.Pow(P2_e3, 6.0f);
 		float temp_gcse_55 = temp_gcse_36 * P2_e1 * P2_e1 * P2_e1;
-		float temp_gcse_57 = MathF.Pow(P2_e2,4.0f);
+		float temp_gcse_57 = MathF.Pow(P2_e2, 4.0f);
 		float temp_gcse_58 = P2_e3 * P2_e3;
-		float temp_gcse_60 = MathF.Pow(P2_e3,4.0f);
-		float temp_gcse_67 = MathF.Pow(P2_e1,4.0f);
+		float temp_gcse_60 = MathF.Pow(P2_e3, 4.0f);
+		float temp_gcse_67 = MathF.Pow(P2_e1, 4.0f);
 		float temp_gcse_82 = P2_e1 * P2_e1 * P2_e1;
 		float temp_gcse_90 = P2_e1 * P2_e1;
 		float temp_gcse_94 = 6.0f * temp_gcse_90;
@@ -151,7 +150,7 @@ public static class TriangleInterpolation
 		float temp_gcse_167 = 3.0f * temp_gcse_90;
 		float temp_gcse_169 = P2_e2 * P2_e2 * P2_e2;
 		float temp_gcse_173 = P2_e2 * P2_e2;
-		float macro_Motor_temp2_1 = (temp_gcse_53 + P1_e3 * MathF.Pow(P2_e3,5.0f) + (temp_gcse_5 + P1_e2 * P2_e2 + temp_gcse_167 + temp_gcse_26) * temp_gcse_60 + (temp_gcse_23 * temp_gcse_173 + temp_gcse_52) * temp_gcse_58 * P2_e3 + (temp_gcse_6 + temp_gcse_32 * temp_gcse_169 + (temp_gcse_94 + temp_gcse_36 * P2_e1) * temp_gcse_173 + temp_gcse_117 * P2_e2 + temp_gcse_22 + temp_gcse_55) * temp_gcse_58 + (P1_e3 * temp_gcse_57 + temp_gcse_52 * temp_gcse_173 + P1_e3 * temp_gcse_67) * P2_e3 + temp_gcse_38 + P1_e2 * MathF.Pow(P2_e2,5.0f) + (temp_gcse_167 + temp_gcse_26) * temp_gcse_57 + temp_gcse_117 * temp_gcse_169 + (temp_gcse_22 + temp_gcse_55) * temp_gcse_173 + P1_e2 * temp_gcse_67 * P2_e2 + temp_gcse_29 + P1_e1 * MathF.Pow(P2_e1,5.0f)) / (temp_gcse_53 + (temp_gcse_5 + temp_gcse_167) * temp_gcse_60 + (temp_gcse_6 + temp_gcse_94 * temp_gcse_173 + temp_gcse_22) * temp_gcse_58 + temp_gcse_38 + temp_gcse_167 * temp_gcse_57 + temp_gcse_22 * temp_gcse_173 + temp_gcse_29);
+		float macro_Motor_temp2_1 = (temp_gcse_53 + P1_e3 * MathF.Pow(P2_e3, 5.0f) + (temp_gcse_5 + P1_e2 * P2_e2 + temp_gcse_167 + temp_gcse_26) * temp_gcse_60 + (temp_gcse_23 * temp_gcse_173 + temp_gcse_52) * temp_gcse_58 * P2_e3 + (temp_gcse_6 + temp_gcse_32 * temp_gcse_169 + (temp_gcse_94 + temp_gcse_36 * P2_e1) * temp_gcse_173 + temp_gcse_117 * P2_e2 + temp_gcse_22 + temp_gcse_55) * temp_gcse_58 + (P1_e3 * temp_gcse_57 + temp_gcse_52 * temp_gcse_173 + P1_e3 * temp_gcse_67) * P2_e3 + temp_gcse_38 + P1_e2 * MathF.Pow(P2_e2, 5.0f) + (temp_gcse_167 + temp_gcse_26) * temp_gcse_57 + temp_gcse_117 * temp_gcse_169 + (temp_gcse_22 + temp_gcse_55) * temp_gcse_173 + P1_e2 * temp_gcse_67 * P2_e2 + temp_gcse_29 + P1_e1 * MathF.Pow(P2_e1, 5.0f)) / (temp_gcse_53 + (temp_gcse_5 + temp_gcse_167) * temp_gcse_60 + (temp_gcse_6 + temp_gcse_94 * temp_gcse_173 + temp_gcse_22) * temp_gcse_58 + temp_gcse_38 + temp_gcse_167 * temp_gcse_57 + temp_gcse_22 * temp_gcse_173 + temp_gcse_29);
 		float temp_gcse_75 = temp_gcse_58 + P2_e2 * P2_e2 + P2_e1 * P2_e1;
 		float temp_gcse_89 = temp_gcse_58 + P2_e2 * P2_e2;
 		float macro_Motor_temp2_e01 = (P1_e0 * P2_e1 - P1_e1 * P2_e0) / temp_gcse_75;
@@ -284,14 +283,14 @@ public static class TriangleInterpolation
 		float CI_e013 = (temp_gcse_8 * cz + temp_gcse_87 * cy + temp_gcse_9 * cx + temp_gcse_112 + temp_gcse_19 + temp_gcse_100) * temp_gcse_148 + (temp_gcse_150 * cz + temp_gcse_44 * cy - temp_gcse_140 * cx - temp_gcse_163) * t + cy;
 		float CI_e023 = (temp_gcse_10 * cz + temp_gcse_17 * cy + temp_gcse_88 * cx + temp_gcse_102 + temp_gcse_31 + temp_gcse_104 + temp_gcse_164) * temp_gcse_148 + ((-(temp_gcse_151 * cz)) - temp_gcse_140 * cy + (-temp_gcse_44) * cx + temp_gcse_168) * t - cx;
 		float CI_e123 = AI_e123;
-		
-		
+
+
 		return (
-			AI_e123, AI_e023, AI_e012, AI_e013, 
-			At_e023, At_e123, At_e012, At_e013, 
-			BI_e012, BI_e013, BI_e023, BI_e123, 
-			Bt_e023, Bt_e013, Bt_e012, Bt_e123, 
-			CI_e023, CI_e012, CI_e013, CI_e123, 
+			AI_e123, AI_e023, AI_e012, AI_e013,
+			At_e023, At_e123, At_e012, At_e013,
+			BI_e012, BI_e013, BI_e023, BI_e123,
+			Bt_e023, Bt_e013, Bt_e012, Bt_e123,
+			CI_e023, CI_e012, CI_e013, CI_e123,
 			Ct_e123, Ct_e013, Ct_e012, Ct_e023
 		);
 	}

@@ -26,27 +26,6 @@ public partial class TriangleInterpolationManager : Node3D
 		bottomTriangle.Set(A, B, C);
 	}
 
-	public static (Vector3, Vector3, Vector3) GetTriangleUsingArray(float time)
-	{
-		float[] arrayAI = new float[32];
-		float[] arrayAt = new float[32];
-		float[] arrayBI = new float[32];
-		float[] arrayBt = new float[32];
-		float[] arrayCI = new float[32];
-		float[] arrayCt = new float[32];
-		TriangleInterpolationArrays.Execute(
-			A.X, A.Y, A.Z,
-			B.X, B.Y, B.Z,
-			C.X, C.Y, C.Z,
-			Mathf.Sin(time),
-			arrayAI, arrayAt, arrayBI, arrayBt, arrayCI, arrayCt
-		);
-		return (
-			new Vector3(arrayAI[11], arrayAI[12], arrayAI[13]),
-			new Vector3(arrayBI[11], arrayBI[12], arrayBI[13]),
-			new Vector3(arrayCI[11], arrayCI[12], arrayCI[13]));
-	}
-
 	public static (Vector3, Vector3, Vector3) GetTriangleUsingArrayMaxima(float time)
 	{
 		float[] arrayAI = new float[32];
@@ -110,6 +89,27 @@ public partial class TriangleInterpolationManager : Node3D
 			new Vector3(arrayCI[11], arrayCI[12], arrayCI[13]));
 	}
 
+	public static (Vector3, Vector3, Vector3) GetTriangleUsingArray(float time)
+	{
+		float[] arrayAI = new float[32];
+		float[] arrayAt = new float[32];
+		float[] arrayBI = new float[32];
+		float[] arrayBt = new float[32];
+		float[] arrayCI = new float[32];
+		float[] arrayCt = new float[32];
+		TriangleInterpolationArrays.Execute(
+			A.X, A.Y, A.Z,
+			B.X, B.Y, B.Z,
+			C.X, C.Y, C.Z,
+			Mathf.Sin(time),
+			arrayAI, arrayAt, arrayBI, arrayBt, arrayCI, arrayCt
+		);
+		return (
+			new Vector3(arrayAI[11], arrayAI[12], arrayAI[13]),
+			new Vector3(arrayBI[11], arrayBI[12], arrayBI[13]),
+			new Vector3(arrayCI[11], arrayCI[12], arrayCI[13]));
+	}
+
 	public static (Vector3, Vector3, Vector3) GetTriangleUsingTuple(float time)
 	{
 		(float AI_e123, float AI_e2, float AI_e3, float AI_e0, float AI_e1, float AI_e023, float AI_e012, float AI_e013,
@@ -126,15 +126,10 @@ public partial class TriangleInterpolationManager : Node3D
 			new Vector3(AI_e012, AI_e013, AI_e023),
 			new Vector3(BI_e012, BI_e013, BI_e023),
 			new Vector3(CI_e012, CI_e013, CI_e023));
-		// return (
-		// 	new Vector3(At_e012, At_e013, At_e023),
-		// 	new Vector3(Bt_e012, Bt_e013, Bt_e023),
-		// 	new Vector3(Ct_e012, Ct_e013, Ct_e023));
 	}
 
 	public static (Vector3, Vector3, Vector3) GetTriangleUsingVector3(float time)
 	{
-		// Return Vector3
 		(Vector3 AI, Vector3 At, Vector3 BI, Vector3 Bt, Vector3 CI, Vector3 Ct) = TriangleInterpolationVector3.Execute(
 		   A.X, A.Y, A.Z,
 		   B.X, B.Y, B.Z,

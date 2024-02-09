@@ -1,22 +1,14 @@
-using System;
-using BenchmarkDotNet;
 using BenchmarkDotNet.Attributes;
 using BenchmarkDotNet.Running;
 using Godot;
 
-class Program
-{
-    static void Main(string[] args)
-    {
-        Console.WriteLine("Starting testing...");
+// Run the benchmark
+BenchmarkRunner.Run<InterpolatingTriangleBenchmark>();
 
-        BenchmarkRunner.Run<InterpolatingTriangleTest>();
-
-        Console.ReadLine();
-    }
-}
-
-public class InterpolatingTriangleTest
+/// <summary>
+///   This class contains different methods to calculate the interpolating triangle from the Gaalop Web example.
+/// </summary>
+public class InterpolatingTriangleBenchmark
 {
     const int IterationCount = 10;
 
@@ -26,7 +18,6 @@ public class InterpolatingTriangleTest
     {
         (Vector3 a, Vector3 b, Vector3 c) = TriangleInterpolationManager.GetTriangleUsingArray(0);
     }
-
 
     [Benchmark]
     [IterationCount(IterationCount)]

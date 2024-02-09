@@ -15,3 +15,4 @@ M = cos(angle/2) + sinus * p0;
 ?p7 = M*p3*~M;
 ?p8 = M*p4*~M;
 
+//?p8normalized = p8 /abs(p8)

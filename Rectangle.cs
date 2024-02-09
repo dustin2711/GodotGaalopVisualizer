@@ -57,6 +57,9 @@ public partial class Rectangle : Node2D
 
 		RotatingRectangleArrays.Execute(time, p5, p6, p7, p8);
 
+		Vector2 CreatePoint(float[] array)
+			=> new(-array[5] / array[6], array[4] / array[6]);
+
 		return new Vector2[]
 		{
 			CreatePoint(p5),
@@ -72,6 +75,9 @@ public partial class Rectangle : Node2D
 		 float p6_e01, float p6_e12, float p6_e02, float p6_1,
 		 float p7_1, float p7_e01, float p7_e12, float p7_e02,
 		 float p8_1, float p8_e01, float p8_e12, float p8_e02) = RotatingRectangleTuples.Execute(time);
+
+		Vector2 CreatePoint(float e02, float e12, float e01)
+			=> new(-e02 / e12, e01 / e12);
 
 		return new Vector2[]
 		{
@@ -95,15 +101,6 @@ public partial class Rectangle : Node2D
 		[5]: e02
 		[6]: e12
 	*/
-	public static Vector2 CreatePoint(float[] array)
-	{
-		return new Vector2(1f * -array[5] / array[6], 1f * array[4] / array[6]);
-	}
-
-	public static Vector2 CreatePoint(float e02, float e12, float e01)
-	{
-		return new Vector2(-e02 / e12, e01 / e12);
-	}
 
 	private void DrawPolygon(Vector2[] points, Color? color = null)
 	{
