@@ -8,11 +8,13 @@ angle = TIME;
 sinus = sin(angle / 2);
 M = cos(angle/2) + sinus * p0;
 
-#pragma return p5,p6,p7,p8 typed Godot.Vector2 as new Godot.Vector2(-<e02> / <e12>, <e01> / <e12>)
+#pragma output p5 e1^e2
+
+#spragma return p5,p6,p7,p8 typed Godot.Vector2 as new Godot.Vector2(-<e02> / <e12>, <e01> / <e12>)
 
 ?p5 = M*p1*~M;
-?p6 = M*p2*~M;
-?p7 = M*p3*~M;
-?p8 = M*p4*~M;
+p6 = M*p2*~M;
+p7 = M*p3*~M;
+p8 = M*p4*~M;
 
 //?p8normalized = p8 /abs(p8)

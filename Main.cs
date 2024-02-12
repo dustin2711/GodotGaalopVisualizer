@@ -21,24 +21,31 @@ public class InterpolatingTriangleBenchmark
 
     [Benchmark]
     [IterationCount(IterationCount)]
-    public void InterpolatingTriangleUsingArrayMaxima()
+    public void InterpolatingTriangleUsingArrayOutput()
     {
-        (Vector3 a, Vector3 b, Vector3 c) = TriangleInterpolationManager.GetTriangleUsingArrayMaxima(0);
+        (Vector3 a, Vector3 b, Vector3 c) = TriangleInterpolationManager.GetTriangleUsingArrayOutput(0);
     }
 
-    [Benchmark]
-    [IterationCount(IterationCount)]
-    public void InterpolatingTriangleUsingArrayCSE()
-    {
-        (Vector3 a, Vector3 b, Vector3 c) = TriangleInterpolationManager.GetTriangleUsingArrayCSE(0);
-    }
+    //[Benchmark]
+    //[IterationCount(IterationCount)]
+    //public void InterpolatingTriangleUsingArrayMaxima()
+    //{
+    //    (Vector3 a, Vector3 b, Vector3 c) = TriangleInterpolationManager.GetTriangleUsingArrayMaxima(0);
+    //}
 
-    [Benchmark]
-    [IterationCount(IterationCount)]
-    public void InterpolatingTriangleUsingArrayMaximaCSE()
-    {
-        (Vector3 a, Vector3 b, Vector3 c) = TriangleInterpolationManager.GetTriangleUsingArrayMaximaCSE(0);
-    }
+    //[Benchmark]
+    //[IterationCount(IterationCount)]
+    //public void InterpolatingTriangleUsingArrayCSE()
+    //{
+    //    (Vector3 a, Vector3 b, Vector3 c) = TriangleInterpolationManager.GetTriangleUsingArrayCSE(0);
+    //}
+
+    //[Benchmark]
+    //[IterationCount(IterationCount)]
+    //public void InterpolatingTriangleUsingArrayMaximaCSE()
+    //{
+    //    (Vector3 a, Vector3 b, Vector3 c) = TriangleInterpolationManager.GetTriangleUsingArrayMaximaCSE(0);
+    //}
 
     [Benchmark]
     [IterationCount(IterationCount)]
@@ -54,24 +61,24 @@ public class InterpolatingTriangleBenchmark
         (Vector3 a, Vector3 b, Vector3 c) = TriangleInterpolationManager.GetTriangleUsingVector3(0);
     }
 
-    [Benchmark]
-    [IterationCount(IterationCount)]
-    public void InterpolatingTriangleUsingVector3CSE()
-    {
-        (Vector3 a, Vector3 b, Vector3 c) = TriangleInterpolationManager.GetTriangleUsingVector3CSE(0);
-    }
+    //[Benchmark]
+    //[IterationCount(IterationCount)]
+    //public void InterpolatingTriangleUsingVector3CSE()
+    //{
+    //    (Vector3 a, Vector3 b, Vector3 c) = TriangleInterpolationManager.GetTriangleUsingVector3CSE(0);
+    //}
 
-    [Benchmark]
-    [IterationCount(IterationCount)]
-    public void InterpolatingTriangleUsingVector3Maxima()
-    {
-        (Vector3 a, Vector3 b, Vector3 c) = TriangleInterpolationManager.GetTriangleUsingVector3Maxima(0);
-    }
+    //[Benchmark]
+    //[IterationCount(IterationCount)]
+    //public void InterpolatingTriangleUsingVector3Maxima()
+    //{
+    //    (Vector3 a, Vector3 b, Vector3 c) = TriangleInterpolationManager.GetTriangleUsingVector3Maxima(0);
+    //}
 
-    [Benchmark]
-    [IterationCount(IterationCount)]
-    public void InterpolatingTriangleUsingVector3MaximaCSE()
-    {
-        (Vector3 a, Vector3 b, Vector3 c) = TriangleInterpolationManager.GetTriangleUsingVector3MaximaCSE(0);
-    }
+    //[Benchmark]
+    //[IterationCount(IterationCount)]
+    //public void InterpolatingTriangleUsingVector3MaximaCSE()
+    //{
+    //    (Vector3 a, Vector3 b, Vector3 c) = TriangleInterpolationManager.GetTriangleUsingVector3MaximaCSE(0);
+    //}
 }

@@ -110,6 +110,30 @@ public partial class TriangleInterpolationManager : Node3D
 			new Vector3(arrayCI[11], arrayCI[12], arrayCI[13]));
 	}
 
+	/// <summary>
+	///   Uses the output pragma to reduce the used variables.
+	/// </summary>
+	public static (Vector3, Vector3, Vector3) GetTriangleUsingArrayOutput(float time)
+	{
+		float[] arrayAI = new float[32];
+		float[] arrayAt = new float[32];
+		float[] arrayBI = new float[32];
+		float[] arrayBt = new float[32];
+		float[] arrayCI = new float[32];
+		float[] arrayCt = new float[32];
+		TriangleInterpolationArrayOutput.Execute(
+			A.X, A.Y, A.Z,
+			B.X, B.Y, B.Z,
+			C.X, C.Y, C.Z,
+			Mathf.Sin(time),
+			arrayAI, arrayAt, arrayBI, arrayBt, arrayCI, arrayCt
+		);
+		return (
+			new Vector3(arrayAI[11], arrayAI[12], arrayAI[13]),
+			new Vector3(arrayBI[11], arrayBI[12], arrayBI[13]),
+			new Vector3(arrayCI[11], arrayCI[12], arrayCI[13]));
+	}
+
 	public static (Vector3, Vector3, Vector3) GetTriangleUsingTuple(float time)
 	{
 		(float AI_e123, float AI_e2, float AI_e3, float AI_e0, float AI_e1, float AI_e023, float AI_e012, float AI_e013,
@@ -185,10 +209,13 @@ public partial class TriangleInterpolationManager : Node3D
 		(a, b, c) = GetTriangleUsingArray(time);
 		movingTriangle.Set(a, b, c);
 
-		(a, b, c) = GetTriangleUsingTuple(time);
-		movingTriangle.Set(a, b, c);
+		// (a, b, c) = GetTriangleUsingTuple(time);
+		// movingTriangle.Set(a, b, c);
 
-		(a, b, c) = GetTriangleUsingVector3(time);
+		// (a, b, c) = GetTriangleUsingVector3(time);
+		// movingTriangle.Set(a, b, c);
+
+		(a, b, c) = GetTriangleUsingArrayOutput(time);
 		movingTriangle.Set(a, b, c);
 
 		// Top and bottom triangle are nonetheless invisible for some reason
