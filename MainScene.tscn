@@ -1,19 +1,17 @@
 [gd_scene load_steps=4 format=3 uid="uid://xsc465007r7r"]
 
+[ext_resource type="Script" path="res://Line.cs" id="1_rur6m"]
 [ext_resource type="Script" path="res://Rectangle.cs" id="2_sj3t2"]
 [ext_resource type="Script" path="res://SphereCenter.cs" id="3_2agsu"]
-[ext_resource type="Script" path="res://LinePolygon.cs" id="3_g8aba"]
 
-[node name="Node2D" type="Node2D"]
+[node name="Root" type="Node2D"]
 
-[node name="Line" type="Node2D" parent="."]
+[node name="LinePolygon" type="Node2D" parent="."]
 position = Vector2(200, 200)
-script = ExtResource("3_g8aba")
+script = ExtResource("1_rur6m")
 
-[node name="Rectangle" type="Node2D" parent="."]
+[node name="RotatingRectangle" type="Node2D" parent="."]
 script = ExtResource("2_sj3t2")
-
-[node name="Polygon2D" type="Polygon2D" parent="."]
 
 [node name="SphereCenter" type="Node" parent="."]
 script = ExtResource("3_2agsu")

@@ -1,0 +1,35 @@
+//origin = createPoint(0, 0);
+tau = 6.2831853;
+quarter = 0.25*tau
+
+e01 = e0^e1
+
+a = createPoint(ax, ay);
+b = createPoint(bx, by);
+c = createPoint(cx, cy);
+
+// Create line from A to B 
+// Need to normalize so distance 1 actually means distance 1
+firstLine_ = *(*a^*b);
+firstLine = firstLine_ / abs(firstLine_)
+//#pragma range 0<=dist<=1
+firstLineLeft = firstLine - halfWidth * e0;
+firstLineRight = firstLine + halfWidth * e0;
+
+secondLine_ = *(*b^*c);
+secondLine = secondLine_ / abs(secondLine_)
+secondLineLeft = secondLine - halfWidth * e0;
+secondLineRight = secondLine + halfWidth * e0;
+
+   
+quarterRotorAroundA = cos(0.5 * quarter) + sin(0.5 * quarter) * a;
+verticalLineAtA = quarterRotorAroundA * firstLine * ~quarterRotorAroundA;
+
+#psragma normalize                             
+#pragma return firstPointLeft,firstPointRight,secondPointLeft,secondPointRight typed Vector2 as new Vector2(-<e02> / <e12>, <e01> / <e12>)
+#pragma insert using Godot;
+firstPointLeft = firstLineLeft * verticalLineAtA;
+firstPointRight = firstLineRight * verticalLineAtA;
+
+?secondPointLeft = firstLineLeft * secondLineLeft;
+?secondPointRight = firstLineRight * secondLineRight;

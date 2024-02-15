@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://b02sirmj2bpvq"]
 
-[ext_resource type="Script" path="res://TriangleInterpolationManager.cs" id="1_nkfq8"]
-[ext_resource type="Script" path="res://Triangle3D.cs" id="1_u1l85"]
+[ext_resource type="Script" path="res://TriangleInterpolationManager.cs" id="1_6406b"]
+[ext_resource type="Script" path="res://Triangle3D.cs" id="2_ifmx1"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_pewao"]
 
@@ -13,18 +13,18 @@ transform = Transform3D(1, 0, 0, 0, 0.999504, 0.0314976, 0, -0.0314976, 0.999504
 [node name="Light" type="DirectionalLight3D" parent="."]
 
 [node name="TriangleInterpolation" type="Node3D" parent="."]
-script = ExtResource("1_nkfq8")
+script = ExtResource("1_6406b")
 
 [node name="TopTriangle" type="MeshInstance3D" parent="TriangleInterpolation"]
 mesh = SubResource("ArrayMesh_pewao")
 skeleton = NodePath("../..")
-script = ExtResource("1_u1l85")
+script = ExtResource("2_ifmx1")
 
 [node name="MovingTriangle" type="MeshInstance3D" parent="TriangleInterpolation"]
 mesh = SubResource("ArrayMesh_pewao")
 skeleton = NodePath("../..")
-script = ExtResource("1_u1l85")
+script = ExtResource("2_ifmx1")
 
 [node name="BottomTriangle" type="MeshInstance3D" parent="TriangleInterpolation"]
 mesh = SubResource("ArrayMesh_pewao")
-script = ExtResource("1_u1l85")
+script = ExtResource("2_ifmx1")

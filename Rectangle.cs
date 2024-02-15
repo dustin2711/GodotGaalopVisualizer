@@ -4,6 +4,9 @@ using System.Linq;
 
 public partial class Rectangle : Node2D
 {
+	[Export]
+	public bool IsActive;
+
 	private float time;
 
 	private Polygon2D poly = new();
@@ -11,6 +14,7 @@ public partial class Rectangle : Node2D
 	public override void _Ready()
 	{
 		AddChild(poly);
+		GD.Print("Yo");
 	}
 
 	public void DrawText(Vector2 position, string text)
@@ -31,6 +35,11 @@ public partial class Rectangle : Node2D
 
 	public override void _Process(double delta)
 	{
+		if (!IsActive)
+		{
+			return;
+		}
+
 		time += 0.1f * (float)delta;
 
 		Vector2[] points;
