@@ -6,6 +6,7 @@ using System.Linq;
 public enum PolygonCreationType
 {
 	Default,
+	DefaultNew,
 	GaalopOld,
 	GaalopNew
 }
@@ -47,9 +48,10 @@ public partial class Line : Node2D
 	{
 		Vector2[] points = PolygonCreationType switch
 		{
-			PolygonCreationType.GaalopNew => PolygonFromLineBuilder.GaalopNew(LinePoints, halfWidth),
-			PolygonCreationType.GaalopOld => PolygonFromLineBuilder.GaalopOld(LinePoints, halfWidth),
 			PolygonCreationType.Default => PolygonFromLineBuilder.Default(LinePoints, halfWidth),
+			PolygonCreationType.DefaultNew => PolygonFromLineBuilder.DefaultNew(LinePoints, halfWidth),
+			PolygonCreationType.GaalopOld => PolygonFromLineBuilder.GaalopOld(LinePoints, halfWidth),
+			PolygonCreationType.GaalopNew => PolygonFromLineBuilder.GaalopNew(LinePoints, halfWidth),
 			_ => throw new Exception()
 		};
 		GD.Print(PolygonCreationType);

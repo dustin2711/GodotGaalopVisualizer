@@ -13,17 +13,17 @@ public class PolygonFromLineBuilder
 
 	public const float Quarter = 0.25f * Tau;
 
-	public static Vector2[] Default(Vector2[] points, float halfWidth)
+	public static Vector2[] Default(Vector2[] linePoints, float halfWidth)
 	{
 		List<Vector2> leftPoints = new();
 		List<Vector2> rightPoints = new();
 
 		// Iterate points
-		for (int index = 0; index < points.Length - 2; index++)
+		for (int index = 0; index < linePoints.Length - 2; index++)
 		{
-			Vector2 lastPoint = points[index];
-			Vector2 point = points[index + 1];
-			Vector2 nextPoint = points[index + 2];
+			Vector2 lastPoint = linePoints[index];
+			Vector2 point = linePoints[index + 1];
+			Vector2 nextPoint = linePoints[index + 2];
 
 			Vector2 lastToCurrent = point - lastPoint;
 			float lastOrientation = lastToCurrent.Orientation().NormalizeAngle();
@@ -77,17 +77,89 @@ public class PolygonFromLineBuilder
 		return polygonPoints;
 	}
 
-	public static Vector2[] GaalopOld(Vector2[] points, float halfWidth)
+	public static Vector2[] DefaultNew(Vector2[] linePoints, float halfWidth)
+	{
+		// Number of loops
+		int count = linePoints.Count() - 2;
+
+		Vector2[] polygonPoints = new Vector2[2 * count];
+
+		float lastOrientation = 0;
+
+		// Iterate points
+		for (int index = 0; index < linePoints.Length - 2; index++)
+		{
+			Vector2 lastPoint = linePoints[index];
+			Vector2 point = linePoints[index + 1];
+			Vector2 nextPoint = linePoints[index + 2];
+
+			Vector2 lastToCurrent = point - lastPoint;
+
+			if (index == 0)
+			{
+				lastOrientation = lastToCurrent.Orientation().NormalizeAngle();
+			}
+
+			float nextOrientation = (nextPoint - point).Orientation();
+			bool isLeftCurve = (nextOrientation - lastOrientation).NormalizeAngle() is > 0 and < Mathf.Pi;
+
+			float left = lastOrientation + Quarter;
+			float right = lastOrientation - Quarter;
+			float leftOrRight = isLeftCurve ? left : right;
+
+			float nextLeft = nextOrientation + Quarter;
+			float nextRight = nextOrientation - Quarter;
+			float nextLeftOrRight = isLeftCurve ? nextLeft : nextRight;
+
+			Vector2 innerIntersection = FindInnerIntersection(lastOrientation, nextOrientation,
+				lastPoint, point, leftOrRight, nextLeftOrRight, halfWidth);
+
+			// Draw spiky
+			// Find outer intersection: Shift the previous and next point laterally to the the outer of the curve
+			Vector2 currentPointOutwards = lastPoint.MoveInDirection(-halfWidth, leftOrRight);
+			Vector2 nextPointOutwards = point.MoveInDirection(-halfWidth, nextLeftOrRight);
+
+			Vector2 outerIntersection = GeometryUtilities.LineSegmentIntersectionDirectionForced(
+				currentPointOutwards, lastOrientation,
+				nextPointOutwards, nextOrientation);
+
+
+
+			Vector2 leftPoint;
+			Vector2 rightPoint;
+			if (isLeftCurve)
+			{
+				leftPoint = innerIntersection;
+				rightPoint = outerIntersection;
+			}
+			else
+			{
+				leftPoint = outerIntersection;
+				rightPoint = innerIntersection;
+			}
+			polygonPoints[index] = leftPoint;
+			polygonPoints[2 * count - 1 - index] = rightPoint;
+			// polygonPoints[index] = isLeftCurve ? innerIntersection : outerIntersection;
+			// polygonPoints[2 * count - 1 - index] = isLeftCurve ? outerIntersection : innerIntersection;
+
+			// Assign values needed next round
+			lastOrientation = nextOrientation;
+		}
+
+		return polygonPoints;
+	}
+
+	public static Vector2[] GaalopOld(Vector2[] linePoints, float halfWidth)
 	{
 		List<Vector2> leftPoints = new();
 		List<Vector2> rightPoints = new();
 
 		// Iterate points
-		for (int index = 0; index < points.Length - 2; index++)
+		for (int index = 0; index < linePoints.Length - 2; index++)
 		{
-			Vector2 lastPoint = points[index];
-			Vector2 point = points[index + 1];
-			Vector2 nextPoint = points[index + 2];
+			Vector2 lastPoint = linePoints[index];
+			Vector2 point = linePoints[index + 1];
+			Vector2 nextPoint = linePoints[index + 2];
 
 			Vector2 lastToCurrent = point - lastPoint;
 			float lastOrientation = lastToCurrent.Orientation().NormalizeAngle();
@@ -115,7 +187,7 @@ public class PolygonFromLineBuilder
 		return polygonPoints;
 	}
 
-	public static Vector2[] GaalopNew(Vector2[] LinePoints, float halfWidth)
+	public static Vector2[] GaalopNew(Vector2[] linePoints, float halfWidth)
 	{
 		float firstLine__e0;
 		float firstLine__e1;
@@ -128,15 +200,15 @@ public class PolygonFromLineBuilder
 		float firstLineRight_e0 = 0;
 
 		// Number of loops
-		int count = LinePoints.Count() - 2;
+		int count = linePoints.Count() - 2;
 
-		Vector2[] points = new Vector2[2 * count];
+		Vector2[] polygonPoints = new Vector2[2 * count];
 
 		for (int index = 0; index < count; index++)
 		{
-			Vector2 lastPoint = LinePoints[index];
-			Vector2 point = LinePoints[index + 1];
-			Vector2 nextPoint = LinePoints[index + 2];
+			Vector2 lastPoint = linePoints[index];
+			Vector2 point = linePoints[index + 1];
+			Vector2 nextPoint = linePoints[index + 2];
 
 			float ax = lastPoint.X;
 			float ay = lastPoint.Y;
@@ -177,16 +249,17 @@ public class PolygonFromLineBuilder
 			Vector2 left = new(-secondPointLeft_e02 / secondPointLeft_e12, secondPointLeft_e01 / secondPointLeft_e12);
 			Vector2 right = new(-secondPointRight_e02 / secondPointRight_e12, secondPointRight_e01 / secondPointRight_e12);
 
-			points[index] = left;
-			points[2 * count - 1 - index] = right;
+			polygonPoints[index] = left;
+			polygonPoints[2 * count - 1 - index] = right;
 
+			// Assign known values for the next loop
 			firstLine_e1 = secondLine_e1;
 			firstLine_e2 = secondLine_e2;
 			firstLineLeft_e0 = secondLineLeft_e0;
 			firstLineRight_e0 = secondLineRight_e0;
 		}
 
-		return points;
+		return polygonPoints;
 	}
 	private static (Vector2 leftPoint, Vector2 rightPoint) GetLeftAndRightIntersection2Shortened(float ax, float ay, float bx, float by, float cx, float cy, float dist)
 	{

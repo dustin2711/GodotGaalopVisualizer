@@ -63,6 +63,13 @@ public static class GeometryUtilities
         return value;
     }
 
+    public static Vector2 LineSegmentIntersectionDirectionForced(Vector2 startA, float orientationA, Vector2 startB, float orientationB)
+    {
+        return (Vector2)LineSegmentIntersectionEndless(
+            startA, startA.MoveInDirection(1, orientationA),
+            startB, startB.MoveInDirection(1, orientationB));
+    }
+
     public static Vector2? LineSegmentIntersectionDirection(Vector2 startA, Vector2 directionA, Vector2 startB, Vector2 directionB)
     {
         return LineSegmentIntersection(

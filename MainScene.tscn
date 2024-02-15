@@ -10,13 +10,18 @@
 position = Vector2(200, 200)
 script = ExtResource("1_rur6m")
 
+[node name="LineDefaultNew" type="Node2D" parent="."]
+position = Vector2(200, 600)
+script = ExtResource("1_rur6m")
+PolygonCreationType = 1
+
 [node name="LineGaalopOld" type="Node2D" parent="."]
 position = Vector2(600, 200)
 script = ExtResource("1_rur6m")
 PolygonCreationType = 1
 
 [node name="LineGaalopNew" type="Node2D" parent="."]
-position = Vector2(1000, 200)
+position = Vector2(600, 600)
 script = ExtResource("1_rur6m")
 PolygonCreationType = 2
 
