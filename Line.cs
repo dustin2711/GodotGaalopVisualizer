@@ -3,64 +3,25 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
+public enum PolygonCreationType
+{
+	Default,
+	GaalopOld,
+	GaalopNew
+}
+
 public partial class Line : Node2D
 {
-	private static List<Vector2> CreateSpiral(float diameter, int roundCount, int pointCountPerRound)
-	{
-		List<Vector2> points = new();
+	[Export]
+	public PolygonCreationType PolygonCreationType = PolygonCreationType.Default;
 
-		int totalPointCount = roundCount * pointCountPerRound;
-		float angleStep = 2 * Mathf.Pi / pointCountPerRound;
-
-		float radius = diameter / 2f;
-		float currentRadius = 0;
-		float radiusIncrement = radius / totalPointCount;
-
-		for (int roundIndex = 0; roundIndex < roundCount; roundIndex++)
-		{
-			for (int pointIndex = 0; pointIndex < pointCountPerRound; pointIndex++)
-			{
-				float angle = pointIndex * angleStep;
-
-				float x = currentRadius * Mathf.Cos(angle);
-				float y = currentRadius * Mathf.Sin(angle);
-
-				points.Add(new Vector2(x, y));
-
-				// Increase radius for the next point
-				currentRadius += radiusIncrement;
-			}
-		}
-
-		return points;
-	}
-
-	private Vector2[] Points = CreateSpiral(400, 4, 32).ToArray();
-
-	// private Vector2[] Points = new Vector2[]
-	// {
-	// 	new(100, 100),
-	// 	new(300, 100),
-	// 	new(300, 300),
-	// 	new(500, 300),
-	// 	new(500, 500),
-	// };
-
-	private Vector2 PointA => Points[0];
-
-	private Vector2 PointB => Points[1];
-
-	private Vector2 PointC => Points[2];
-
-	private Vector2 PointD => Points[3];
+	private Vector2[] LinePoints = Geometry.CreateSpiral(50, 200, 2, 32).ToArray();
 
 	private float halfWidth = 10f;
 
 	private Polygon2D poly = new();
 
-	Line2D line = new();
-
-	private float time;
+	private Line2D line = new();
 
 	public override void _Input(InputEvent @event)
 	{
@@ -84,21 +45,15 @@ public partial class Line : Node2D
 
 	public override void _Process(double delta)
 	{
-		time += 0.1f * (float)delta;
-
-		Vector2[] points;
-
-		points = GetPointsUsingGaalop();
-		// GD.Print("Array: " + points.JoinString());
-		// points = GetPointsUsingTuples();
-		// GD.Print("Tuples: " + points.JoinString());
-		// points = GetPointsUsingVector2();
-		// GD.Print("Vector2: " + points.JoinString());
-
-		// Add offset and widen
+		Vector2[] points = PolygonCreationType switch
+		{
+			PolygonCreationType.GaalopNew => GetPointsUsingGaalop(),
+			PolygonCreationType.GaalopOld => LineBuilder2.Create(LinePoints, halfWidth, true),
+			_ => LineBuilder2.Create(LinePoints, halfWidth, false),
+		};
+		GD.Print(PolygonCreationType);
 		// points = points.Select(p => new Vector2(100, 100) + 200 * p).ToArray();
-		GD.Print("Transformed: " + points.JoinString());
-
+		// GD.Print("Points: " + points.JoinString());
 
 		DrawLinePolygon(points);
 	}
@@ -115,19 +70,16 @@ public partial class Line : Node2D
 		float firstLineLeft_e0 = 0;
 		float firstLineRight_e0 = 0;
 
-		// List<Vector2> leftPoints = new();
-		// List<Vector2> rightPoints = new();
-
 		// Number of loops
-		int count = Points.Count() - 2;
+		int count = LinePoints.Count() - 2;
 
 		Vector2[] points = new Vector2[2 * count];
 
 		for (int index = 0; index < count; index++)
 		{
-			Vector2 lastPoint = Points[index];
-			Vector2 point = Points[index + 1];
-			Vector2 nextPoint = Points[index + 2];
+			Vector2 lastPoint = LinePoints[index];
+			Vector2 point = LinePoints[index + 1];
+			Vector2 nextPoint = LinePoints[index + 2];
 
 			float ax = lastPoint.X;
 			float ay = lastPoint.Y;
@@ -171,82 +123,24 @@ public partial class Line : Node2D
 			points[index] = left;
 			points[2 * count - 1 - index] = right;
 
-			// leftPoints.Add(left);
-			// rightPoints.Add(right);
-
 			firstLine_e1 = secondLine_e1;
 			firstLine_e2 = secondLine_e2;
 			firstLineLeft_e0 = secondLineLeft_e0;
 			firstLineRight_e0 = secondLineRight_e0;
 		}
 
-		// rightPoints.Reverse();
-		// return leftPoints.Concat(rightPoints).ToArray();
-
 		return points;
 	}
 
-	// private Vector2[] GetPointsUsingArrays()
-	// {
-	// 	float[] aL = new float[8];
-	// 	float[] aR = new float[8];
-	// 	float[] bL = new float[8];
-	// 	float[] bR = new float[8];
-
-	// 	LinePolygon.Execute(PointA.X, PointA.Y, PointB.X, PointB.Y, PointC.X, PointC.Y, LineWidth, aL, aR, bL, bR);
-
-	// 	Vector2 CreatePoint(float[] array)
-	// 		=> new(-array[5] / array[6], array[4] / array[6]);
-
-	// 	return new Vector2[]
-	// 	{
-	// 		CreatePoint(aL),
-	// 		CreatePoint(aR),
-	// 		CreatePoint(bR),
-	// 		CreatePoint(bL),
-	// 	};
-	// }
-
-	// private Vector2[] GetPointsUsingTuples()
-	// {
-	// 	(float p5_1, float p5_e01, float p5_e12, float p5_e02,
-	// 	 float p6_e01, float p6_e12, float p6_e02, float p6_1,
-	// 	 float p7_1, float p7_e01, float p7_e12, float p7_e02,
-	// 	 float p8_1, float p8_e01, float p8_e12, float p8_e02) = RotatingRectangleTuples.Execute(time);
-
-	// 	Vector2 CreatePoint(float e02, float e12, float e01)
-	// 		=> new(-e02 / e12, e01 / e12);
-
-	// 	return new Vector2[]
-	// 	{
-	// 		CreatePoint(p5_e02, p5_e12, p5_e01),
-	// 		CreatePoint(p6_e02, p6_e12, p6_e01),
-	// 		CreatePoint(p7_e02, p7_e12, p7_e01),
-	// 		CreatePoint(p8_e02, p8_e12, p8_e01)
-	// 	};
-	// }
-
-	// private Vector2[] GetPointsUsingVector2()
-	// {
-	// 	(Vector2 p5, Vector2 p6, Vector2 p7, Vector2 p8) = RotatingRectangleVector2.Execute(time);
-
-	// 	return new Vector2[] { p5, p6, p7, p8 };
-	// }
-
-	/*
-		Blade-array-conversion:
-		[4]: e01
-		[5]: e02
-		[6]: e12
-	*/
-	private void DrawLinePolygon(Vector2[] points, Color? color = null)
+	private void DrawLinePolygon(Vector2[] polygonPoints, Color? color = null)
 	{
-		line.Points = Points;
+		// line.Points = LinePoints;
+		line.Points = polygonPoints;
 		line.DefaultColor = color ?? Colors.White;
 		line.Width = 1;
 		// line.Closed = true;
 
-		poly.Polygon = points;
+		poly.Polygon = polygonPoints;
 		poly.Color = color ?? Colors.Black;
 	}
 }

@@ -6,9 +6,19 @@
 
 [node name="Root" type="Node2D"]
 
-[node name="LinePolygon" type="Node2D" parent="."]
+[node name="LineDefault" type="Node2D" parent="."]
 position = Vector2(200, 200)
 script = ExtResource("1_rur6m")
+
+[node name="LineGaalopOld" type="Node2D" parent="."]
+position = Vector2(600, 200)
+script = ExtResource("1_rur6m")
+PolygonCreationType = 1
+
+[node name="LineGaalopNew" type="Node2D" parent="."]
+position = Vector2(1000, 200)
+script = ExtResource("1_rur6m")
+PolygonCreationType = 2
 
 [node name="RotatingRectangle" type="Node2D" parent="."]
 script = ExtResource("2_sj3t2")
