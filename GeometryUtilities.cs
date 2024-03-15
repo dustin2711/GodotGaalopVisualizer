@@ -63,11 +63,25 @@ public static class GeometryUtilities
         return value;
     }
 
-    public static Vector2 LineSegmentIntersectionDirectionForced(Vector2 startA, float orientationA, Vector2 startB, float orientationB)
+    /// <summary>
+    ///   Finds the intersection of a line with another line.
+    /// </summary>
+    public static Vector2 FindLineIntersection(Vector2 firstPoint, float firstDirection, Vector2 secondPoint, float secondDirection)
     {
         return (Vector2)LineSegmentIntersectionEndless(
-            startA, startA.MoveInDirection(1, orientationA),
-            startB, startB.MoveInDirection(1, orientationB));
+            firstPoint, firstPoint.MoveInDirection(1, firstDirection),
+            secondPoint, secondPoint.MoveInDirection(1, secondDirection));
+
+        // Calculate the direction vectors of the lines
+        Vector2 firstVector = new Vector2(MathF.Cos(firstDirection), MathF.Sin(firstDirection));
+        Vector2 secondVector = new Vector2(MathF.Cos(secondDirection), MathF.Sin(secondDirection));
+
+        // Calculate the intersection point using parametric form
+        float t = (secondPoint.X * firstVector.Y - firstPoint.X * firstVector.Y + firstVector.X * firstPoint.Y - secondVector.X * secondPoint.Y) /
+                  (secondVector.X * firstVector.Y - firstVector.X * secondVector.Y);
+        Vector2 intersection = new Vector2(firstPoint.X + t * firstVector.X, firstPoint.Y + t * firstVector.Y);
+
+        return intersection;
     }
 
     public static Vector2? LineSegmentIntersectionDirection(Vector2 startA, Vector2 directionA, Vector2 startB, Vector2 directionB)

@@ -18,12 +18,12 @@ PolygonCreationType = 1
 [node name="LineGaalopOld" type="Node2D" parent="."]
 position = Vector2(600, 200)
 script = ExtResource("1_rur6m")
-PolygonCreationType = 1
+PolygonCreationType = 2
 
 [node name="LineGaalopNew" type="Node2D" parent="."]
 position = Vector2(600, 600)
 script = ExtResource("1_rur6m")
-PolygonCreationType = 2
+PolygonCreationType = 3
 
 [node name="RotatingRectangle" type="Node2D" parent="."]
 script = ExtResource("2_sj3t2")

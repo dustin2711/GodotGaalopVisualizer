@@ -16,9 +16,9 @@ public partial class Line : Node2D
 	[Export]
 	public PolygonCreationType PolygonCreationType = PolygonCreationType.Default;
 
-	private Vector2[] LinePoints = Geometry.CreateSpiral(50, 200, 2, 32).ToArray();
+	public static Vector2[] LinePoints = Geometry.CreateSpiral(50, 200, 2, 32).ToArray();
 
-	private float halfWidth = 10f;
+	public static float halfWidth = 10f;
 
 	private Polygon2D poly = new();
 
@@ -26,7 +26,7 @@ public partial class Line : Node2D
 
 	public override void _Input(InputEvent @event)
 	{
-		// Place or rotate preview structure
+		// Mouse wheel changes line width
 		if (@event is InputEventMouseButton mouseEvent
 			&& !mouseEvent.Pressed)
 		{

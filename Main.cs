@@ -2,8 +2,39 @@ using BenchmarkDotNet.Attributes;
 using BenchmarkDotNet.Running;
 using Godot;
 
+//PolygonFromLineBuilder.DefaultNew(Line.LinePoints, Line.halfWidth);
+
 // Run the benchmark
-BenchmarkRunner.Run<InterpolatingTriangleBenchmark>();
+BenchmarkRunner.Run<LinePolygonBenchmark>();
+
+public class LinePolygonBenchmark
+{
+    [Benchmark]
+    public void Default()
+    {
+        PolygonFromLineBuilder.Default(Line.LinePoints, Line.halfWidth);
+    }
+
+    [Benchmark]
+    public void DefaultNew()
+    {
+        PolygonFromLineBuilder.DefaultNew(Line.LinePoints, Line.halfWidth);
+    }
+
+
+    [Benchmark]
+    public void GaalopOld()
+    {
+        PolygonFromLineBuilder.GaalopOld(Line.LinePoints, Line.halfWidth);
+    }
+
+
+    [Benchmark]
+    public void GaalopNew()
+    {
+        PolygonFromLineBuilder.GaalopNew(Line.LinePoints, Line.halfWidth);
+    }
+}
 
 /// <summary>
 ///   This class contains different methods to calculate the interpolating triangle from the Gaalop Web example.
