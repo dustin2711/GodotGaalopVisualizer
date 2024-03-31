@@ -1,20 +1,18 @@
 using Godot;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 
 public enum PolygonCreationType
 {
-	Default,
-	DefaultNew,
-	GaalopOld,
-	GaalopNew
+	Legacy,
+	LegacyOptimized,
+	GaalopFirstTry,
+	GaalopOptimized
 }
 
 public partial class Line : Node2D
 {
 	[Export]
-	public PolygonCreationType PolygonCreationType = PolygonCreationType.Default;
+	public PolygonCreationType PolygonCreationType = PolygonCreationType.Legacy;
 
 	public static Vector2[] LinePoints = Geometry.CreateSpiral(50, 200, 2, 32).ToArray();
 
@@ -48,10 +46,10 @@ public partial class Line : Node2D
 	{
 		Vector2[] points = PolygonCreationType switch
 		{
-			PolygonCreationType.Default => PolygonFromLineBuilder.Default(LinePoints, halfWidth),
-			PolygonCreationType.DefaultNew => PolygonFromLineBuilder.DefaultNew(LinePoints, halfWidth),
-			PolygonCreationType.GaalopOld => PolygonFromLineBuilder.GaalopOld(LinePoints, halfWidth),
-			PolygonCreationType.GaalopNew => PolygonFromLineBuilder.GaalopNew(LinePoints, halfWidth),
+			PolygonCreationType.Legacy => PolygonFromLineBuilder.Legacy(LinePoints, halfWidth),
+			PolygonCreationType.LegacyOptimized => PolygonFromLineBuilder.LegacyOptimized(LinePoints, halfWidth),
+			PolygonCreationType.GaalopFirstTry => PolygonFromLineBuilder.GaalopFirstTry(LinePoints, halfWidth),
+			PolygonCreationType.GaalopOptimized => PolygonFromLineBuilder.GaalopOptimized(LinePoints, halfWidth),
 			_ => throw new Exception()
 		};
 		GD.Print(PolygonCreationType);

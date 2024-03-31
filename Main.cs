@@ -5,34 +5,35 @@ using Godot;
 //PolygonFromLineBuilder.DefaultNew(Line.LinePoints, Line.halfWidth);
 
 // Run the benchmark
-BenchmarkRunner.Run<LinePolygonBenchmark>();
+//BenchmarkRunner.Run<LinePolygonBenchmark>();
+BenchmarkRunner.Run<InterpolatingTriangleBenchmark>();
 
 public class LinePolygonBenchmark
 {
     [Benchmark]
-    public void Default()
+    public void PolygonFromLine_Legacy()
     {
-        PolygonFromLineBuilder.Default(Line.LinePoints, Line.halfWidth);
+        PolygonFromLineBuilder.Legacy(Line.LinePoints, Line.halfWidth);
     }
 
     [Benchmark]
-    public void DefaultNew()
+    public void PolygonFromLine_LegacyOptimized()
     {
-        PolygonFromLineBuilder.DefaultNew(Line.LinePoints, Line.halfWidth);
-    }
-
-
-    [Benchmark]
-    public void GaalopOld()
-    {
-        PolygonFromLineBuilder.GaalopOld(Line.LinePoints, Line.halfWidth);
+        PolygonFromLineBuilder.LegacyOptimized(Line.LinePoints, Line.halfWidth);
     }
 
 
     [Benchmark]
-    public void GaalopNew()
+    public void PolygonFromLine_GaalopFirstTry()
     {
-        PolygonFromLineBuilder.GaalopNew(Line.LinePoints, Line.halfWidth);
+        PolygonFromLineBuilder.GaalopFirstTry(Line.LinePoints, Line.halfWidth);
+    }
+
+
+    [Benchmark]
+    public void PolygonFromLine_GaalopOptimized()
+    {
+        PolygonFromLineBuilder.GaalopOptimized(Line.LinePoints, Line.halfWidth);
     }
 }
 
@@ -45,14 +46,14 @@ public class InterpolatingTriangleBenchmark
 
     [Benchmark]
     [IterationCount(IterationCount)]
-    public void InterpolatingTriangleUsingArray()
+    public void InterpolatingTriangle_Array()
     {
         (Vector3 a, Vector3 b, Vector3 c) = TriangleInterpolationManager.GetTriangleUsingArray(0);
     }
 
     [Benchmark]
     [IterationCount(IterationCount)]
-    public void InterpolatingTriangleUsingArrayOutput()
+    public void InterpolatingTriangle_ArrayPragmaOutput()
     {
         (Vector3 a, Vector3 b, Vector3 c) = TriangleInterpolationManager.GetTriangleUsingArrayOutput(0);
     }
@@ -80,14 +81,14 @@ public class InterpolatingTriangleBenchmark
 
     [Benchmark]
     [IterationCount(IterationCount)]
-    public void InterpolatingTriangleUsingTuple()
+    public void InterpolatingTriangle_Tuple()
     {
         (Vector3 a, Vector3 b, Vector3 c) = TriangleInterpolationManager.GetTriangleUsingTuple(0);
     }
 
     [Benchmark]
     [IterationCount(IterationCount)]
-    public void InterpolatingTriangleUsingVector3()
+    public void InterpolatingTriangle_Vector3()
     {
         (Vector3 a, Vector3 b, Vector3 c) = TriangleInterpolationManager.GetTriangleUsingVector3(0);
     }

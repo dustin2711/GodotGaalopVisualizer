@@ -6,21 +6,21 @@
 
 [node name="Root" type="Node2D"]
 
-[node name="LineDefault" type="Node2D" parent="."]
+[node name="Legacy" type="Node2D" parent="."]
 position = Vector2(200, 200)
 script = ExtResource("1_rur6m")
 
-[node name="LineDefaultNew" type="Node2D" parent="."]
+[node name="LegacyOptimized" type="Node2D" parent="."]
 position = Vector2(200, 600)
 script = ExtResource("1_rur6m")
 PolygonCreationType = 1
 
-[node name="LineGaalopOld" type="Node2D" parent="."]
+[node name="GaalopFirstTry" type="Node2D" parent="."]
 position = Vector2(600, 200)
 script = ExtResource("1_rur6m")
 PolygonCreationType = 2
 
-[node name="LineGaalopNew" type="Node2D" parent="."]
+[node name="GaalopOptimized" type="Node2D" parent="."]
 position = Vector2(600, 600)
 script = ExtResource("1_rur6m")
 PolygonCreationType = 3

@@ -5,7 +5,7 @@ p3 = createPoint(-1, -1);
 p4 = createPoint(-1, 1);
 
 angle = TIME;
-sinus = sin(angle / 2);
+sinus = sin(angle / 2); 
 M = cos(angle/2) + sinus * p0;
 
 #pragma output p5 e1^e2
